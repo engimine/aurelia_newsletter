@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manual práctico en español para empezar a utilizar Twenty CRM: configuración, contactos, empresas, oportunidades, correo, automatizaciones y autoalojamiento.">
+  <meta name="theme-color" content="#151018">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Twenty CRM desde cero · Manual de Aurelia">
+  <meta property="og:description" content="El manual práctico para dominar el CRM open source: contactos, oportunidades, correo, automatizaciones y Docker.">
+  <meta property="og:url" content="https://engimine.github.io/aurelia_newsletter/recursos/manual-twenty-crm/">
+  <meta property="og:image" content="https://engimine.github.io/aurelia_newsletter/recursos/manual-twenty-crm/miniatura-linkedin.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Twenty CRM desde cero · Manual de Aurelia">
+  <meta name="twitter:description" content="Guía práctica en español para empezar con Twenty CRM.">
+  <meta name="twitter:image" content="https://engimine.github.io/aurelia_newsletter/recursos/manual-twenty-crm/miniatura-linkedin.jpg">
+  <title>Manual de Twenty CRM desde cero · Aurelia</title>
+  <style>
+    :root{--ink:#17121b;--muted:#665d6a;--paper:#fffaf0;--white:#fff;--pink:#ff176f;--yellow:#ffe338;--blue:#5368ff;--green:#16a66a;--line:#dfd5df;--shadow:8px 8px 0 var(--ink)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}a{color:inherit}img{max-width:100%}button{font:inherit}
+    .wrap{width:min(1120px,calc(100% - 32px));margin:auto}.hero{background:var(--ink);color:#fff;overflow:hidden;position:relative}.hero:before{content:"";position:absolute;width:460px;height:460px;border-radius:50%;background:var(--pink);right:-190px;top:-180px}.hero:after{content:"20";position:absolute;right:4%;bottom:-125px;font-size:25rem;font-weight:1000;line-height:1;color:rgba(255,227,56,.1);letter-spacing:-.12em}.hero-grid{min-height:690px;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:64px;padding:72px 0;position:relative;z-index:1}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:2px solid var(--yellow);border-radius:999px;padding:7px 13px;color:var(--yellow);font-size:.8rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}.hero h1{margin:22px 0 18px;font-size:clamp(3.4rem,8vw,7.4rem);line-height:.82;letter-spacing:-.07em;text-transform:uppercase}.hero h1 span{color:var(--yellow)}.hero p{font-size:1.2rem;max-width:700px;color:#f2eaf3}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;padding:14px 20px;border:2px solid var(--ink);border-radius:999px;background:var(--yellow);color:var(--ink);font-weight:950;text-decoration:none;box-shadow:5px 5px 0 var(--pink)}.button:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--pink)}.aurelia-card{background:var(--yellow);color:var(--ink);border:4px solid #fff;border-radius:34px;padding:28px;transform:rotate(2deg);box-shadow:15px 15px 0 var(--pink)}.aurelia-face{width:92px;height:92px;border:3px solid var(--ink);border-radius:50%;background:var(--pink);display:grid;place-items:center;font-size:3.4rem;margin-bottom:18px}.aurelia-card strong{display:block;font-size:1.55rem;line-height:1.1}.aurelia-card p{color:var(--ink);font-size:1rem}.topnav{position:sticky;top:0;z-index:20;background:rgba(255,250,240,.95);backdrop-filter:blur(12px);border-bottom:2px solid var(--ink)}.topnav .wrap{display:flex;align-items:center;gap:12px;overflow:auto;padding:10px 0;scrollbar-width:none}.topnav a{white-space:nowrap;text-decoration:none;font-weight:850;font-size:.86rem;padding:7px 11px;border-radius:999px}.topnav a:hover{background:var(--yellow)}.cover{margin:38px auto 0;border:3px solid var(--ink);border-radius:28px;overflow:hidden;background:var(--ink);box-shadow:10px 10px 0 var(--pink)}.cover img{width:100%;height:auto;display:block}.cover figcaption{padding:10px 16px;background:var(--yellow);font-size:.82rem;font-weight:850;text-align:center}main{padding:55px 0 90px}.section{scroll-margin-top:76px;margin:0 0 72px}.kicker{font-size:.78rem;font-weight:950;color:var(--pink);text-transform:uppercase;letter-spacing:.12em}.section h2{font-size:clamp(2.1rem,4.6vw,4rem);line-height:1;letter-spacing:-.05em;margin:6px 0 22px}.section h3{font-size:1.45rem;line-height:1.2;margin:28px 0 10px}.lead{font-size:1.16rem;max-width:850px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.grid.two{grid-template-columns:repeat(2,1fr)}.card{background:var(--white);border:2px solid var(--ink);border-radius:22px;padding:24px;box-shadow:5px 5px 0 var(--ink)}.card h3{margin:7px 0 10px}.num{width:38px;height:38px;display:grid;place-items:center;background:var(--pink);color:#fff;border-radius:50%;font-weight:950}.tag{display:inline-block;background:#eceeff;color:#2637b4;padding:5px 9px;border-radius:999px;font-size:.76rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.tag.green{background:#def8ea;color:#087344}.tag.yellow{background:#fff4a8;color:#5b4b00}.choice{padding:30px}.choice.recommended{background:var(--yellow)}.choice ul{padding-left:20px}.callout{border:3px solid var(--ink);background:#fff;padding:24px 26px;border-radius:22px;box-shadow:var(--shadow);margin:28px 0}.callout.warning{background:#fff0f5}.callout.tip{background:#e9f7ff}.callout strong:first-child{font-size:1.1rem}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:stretch;margin:28px 0}.flow .step{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:17px;text-align:center;font-weight:900;position:relative}.flow .step:not(:last-child):after{content:"→";position:absolute;right:-15px;top:50%;transform:translateY(-50%);z-index:2;background:var(--paper);padding:0 2px}.record{border-left:7px solid var(--pink)}.record.company{border-left-color:var(--blue)}.record.deal{border-left-color:var(--green)}.record.task{border-left-color:#f0b000}.table-wrap{overflow:auto;border:2px solid var(--ink);border-radius:20px;background:#fff}table{border-collapse:collapse;width:100%;min-width:700px}th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--ink);color:#fff}tr:last-child td{border-bottom:0}.checklist{list-style:none;padding:0;margin:20px 0}.checklist li{background:#fff;border:1.5px solid var(--ink);border-radius:14px;margin:9px 0;padding:12px 14px 12px 46px;position:relative}.checklist li:before{content:"✓";position:absolute;left:13px;top:10px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:var(--green);color:white;font-weight:1000}.codebox{position:relative;background:#121016;color:#f8edf8;border-radius:18px;padding:22px;margin:15px 0;overflow:auto}.codebox code{font-family:"SFMono-Regular",Consolas,monospace;font-size:.86rem;white-space:pre}.copy{position:absolute;right:10px;top:10px;border:1px solid #918893;background:#2c2630;color:white;border-radius:8px;padding:6px 9px;cursor:pointer}.copy:hover{background:var(--pink)}.timeline{border-left:4px solid var(--ink);margin-left:16px;padding-left:28px}.timeline article{position:relative;margin:0 0 28px}.timeline article:before{content:"";position:absolute;width:18px;height:18px;border:4px solid var(--paper);background:var(--pink);border-radius:50%;left:-39px;top:3px}.minute{font-weight:950;color:var(--pink)}.sources a{display:block;padding:11px 0;border-bottom:1px solid var(--line);font-weight:750}.footer{background:var(--ink);color:#fff;padding:46px 0}.footer-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:30px}.footer a{color:var(--yellow)}.small{font-size:.87rem;color:var(--muted)}.footer .small{color:#c8bdca}.print-note{font-size:.82rem;color:var(--muted);margin-top:24px}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;min-height:auto}.aurelia-card{max-width:520px;margin-bottom:20px}.grid,.grid.two{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr}.flow .step:not(:last-child):after{content:"↓";right:50%;top:auto;bottom:-19px;transform:translateX(50%)}.hero:after{font-size:18rem}}
+    @media(max-width:640px){.hero-grid{padding:54px 0}.hero h1{font-size:3.7rem}.grid,.grid.two{grid-template-columns:1fr}.aurelia-card{transform:none}.section{margin-bottom:56px}.section h2{font-size:2.45rem}.card,.callout{padding:20px}.footer-grid{grid-template-columns:1fr}.topnav{position:static}}
+    @media print{.topnav,.copy,.button{display:none!important}.hero{background:#fff!important;color:#000!important}.hero p{color:#000}.hero-grid{min-height:0;padding:25px 0}.aurelia-card{box-shadow:none}.section{break-inside:avoid}.card,.callout{box-shadow:none}.footer{background:#fff;color:#000}.footer a{color:#000}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Manual práctico · revisado 02/08/2026</span>
+        <h1>Twenty CRM<br><span>desde cero</span></h1>
+        <p>Cómo convertir contactos dispersos, correos y oportunidades en un sistema comercial claro, abierto y bajo tu control.</p>
+        <a class="button" href="#ruta">EMPEZAR EL MANUAL ↓</a>
+      </div>
+      <aside class="aurelia-card">
+        <div class="aurelia-face" aria-hidden="true">👵🏻</div>
+        <strong>Aurelia lo traduce:</strong>
+        <p>Twenty es un CRM: la libreta inteligente donde guardas quién es cada cliente, qué le has ofrecido, cuánto vale la operación y cuál es el siguiente paso.</p>
+        <p><b>No empieces automatizando.</b> Primero organiza bien tus datos; después haz que el sistema trabaje por ti.</p>
+      </aside>
+    </div>
+  </header>
+
+  <nav class="topnav" aria-label="Índice del manual">
+    <div class="wrap">
+      <a href="#que-es">Qué es</a><a href="#ruta">Elegir modalidad</a><a href="#modelo">Modelo de datos</a><a href="#arranque">Primeros pasos</a><a href="#importar">Importar CSV</a><a href="#correo">Correo</a><a href="#pipeline">Pipeline</a><a href="#automatizar">Automatizar</a><a href="#instalar">Instalar</a><a href="#seguridad">Seguridad</a><a href="#plan">Plan de 30 min</a>
+    </div>
+  </nav>
+
+  <figure class="wrap cover">
+    <img src="miniatura-linkedin.jpg" alt="Aurelia recomienda Twenty CRM: manual desde cero" width="1200" height="627">
+    <figcaption>Comparte esta guía con quien todavía gestiona sus clientes entre hojas de cálculo, correos y notas sueltas.</figcaption>
+  </figure>
+
+  <main class="wrap">
+    <section class="section" id="que-es">
+      <span class="kicker">01 · Antes de tocar nada</span>
+      <h2>¿Qué es Twenty?</h2>
+      <p class="lead"><b>Twenty</b> es un CRM de código abierto presentado como alternativa moderna a Salesforce. Sirve para centralizar contactos, empresas, operaciones comerciales, tareas, notas, correos, reuniones, paneles y automatizaciones.</p>
+      <div class="grid">
+        <article class="card"><span class="tag">Personas</span><h3>¿A quién conoces?</h3><p>Nombre, cargo, teléfono, correo, empresa e historial de interacciones.</p></article>
+        <article class="card"><span class="tag">Negocio</span><h3>¿Qué puedes vender?</h3><p>Oportunidades, importe, fase, fecha prevista de cierre y responsable.</p></article>
+        <article class="card"><span class="tag">Acción</span><h3>¿Qué toca hacer?</h3><p>Tareas, notas, reuniones y automatizaciones para que nada se quede parado.</p></article>
+      </div>
+      <div class="callout warning"><strong>Importante.</strong> “Open source” no significa que alojarlo sea gratis: un servidor, las copias, el correo y el mantenimiento también cuestan. La diferencia es que puedes controlar el sistema y tus datos.</div>
+    </section>
+
+    <section class="section" id="ruta">
+      <span class="kicker">02 · Decide el camino</span>
+      <h2>Cloud o autoalojado</h2>
+      <div class="grid two">
+        <article class="card choice recommended"><span class="tag green">Recomendado para probar</span><h3>Twenty Cloud</h3><p>La empresa mantiene el servidor. Creas la cuenta, el espacio de trabajo y empiezas.</p><ul><li>Más rápido.</li><li>Sin Docker ni mantenimiento.</li><li>Ideal para validar el proceso comercial.</li></ul><a href="https://app.twenty.com" target="_blank" rel="noopener"><b>ABRIR TWENTY CLOUD →</b></a></article>
+        <article class="card choice"><span class="tag yellow">Más control</span><h3>Autoalojado</h3><p>Instalas Twenty en tu propio ordenador o servidor con Docker Compose.</p><ul><li>Control de infraestructura y datos.</li><li>Necesitas actualizaciones y copias.</li><li>Recomendable con apoyo técnico.</li></ul><a href="#instalar"><b>VER INSTALACIÓN →</b></a></article>
+      </div>
+      <div class="callout tip"><strong>Consejo de Aurelia:</strong> prueba primero el flujo con pocos datos. Cuando sepas exactamente qué campos, permisos e integraciones necesitas, decide si merece la pena autoalojarlo.</div>
+    </section>
+
+    <section class="section" id="modelo">
+      <span class="kicker">03 · La idea fundamental</span>
+      <h2>El modelo de datos</h2>
+      <p class="lead">Twenty organiza la información en <b>objetos</b>. Los cinco objetos estándar que necesitas conocer son:</p>
+      <div class="grid">
+        <article class="card record"><h3>People · Personas</h3><p>Contactos individuales. El correo es único: dos personas no pueden compartir la misma dirección.</p></article>
+        <article class="card record company"><h3>Companies · Empresas</h3><p>Organizaciones y clientes. Se relacionan con personas y oportunidades; el dominio identifica a la empresa.</p></article>
+        <article class="card record deal"><h3>Opportunities · Oportunidades</h3><p>Ventas o proyectos potenciales con etapa, valor, empresa asociada y fecha de cierre.</p></article>
+        <article class="card record task"><h3>Tasks · Tareas</h3><p>Acciones pendientes, responsable, vencimiento y estado, ligadas a cualquier registro.</p></article>
+        <article class="card"><h3>Notes · Notas</h3><p>Actas, contexto, decisiones y detalles que deben quedar asociados al cliente o proyecto.</p></article>
+        <article class="card"><h3>Objetos propios</h3><p>Puedes crear “Proyectos”, “Inmuebles”, “Licitaciones” o cualquier entidad con vida propia.</p></article>
+      </div>
+      <h3>Regla sencilla: ¿campo u objeto?</h3>
+      <div class="table-wrap"><table><thead><tr><th>Si necesitas…</th><th>Usa…</th><th>Ejemplo</th></tr></thead><tbody><tr><td>Describir algo que ya existe</td><td>Un campo</td><td>“Tipo de cliente” dentro de Persona</td></tr><tr><td>Clasificar registros</td><td>Un campo de selección</td><td>Prospecto / Cliente / Colaborador</td></tr><tr><td>Gestionar algo con fases y fechas propias</td><td>Un objeto</td><td>Proyecto de rehabilitación</td></tr><tr><td>Relacionarlo con varias empresas o personas</td><td>Un objeto con relaciones</td><td>Licitación o inmueble</td></tr></tbody></table></div>
+    </section>
+
+    <section class="section" id="arranque">
+      <span class="kicker">04 · Configuración inicial</span>
+      <h2>Tu primer CRM funcional</h2>
+      <div class="flow"><div class="step">1. Empresa</div><div class="step">2. Persona</div><div class="step">3. Oportunidad</div><div class="step">4. Tarea</div><div class="step">5. Seguimiento</div></div>
+      <div class="grid two">
+        <article class="card"><span class="num">1</span><h3>Crea una empresa</h3><p>Entra en <b>Companies</b> → <b>New record</b>. Añade nombre, dominio web, sector, ubicación y responsable.</p></article>
+        <article class="card"><span class="num">2</span><h3>Añade una persona</h3><p>En <b>People</b>, incorpora nombre, correo, teléfono, cargo y relaciónala con la empresa.</p></article>
+        <article class="card"><span class="num">3</span><h3>Abre una oportunidad</h3><p>En <b>Opportunities</b>, indica nombre, importe estimado, fase, fecha de cierre y empresa.</p></article>
+        <article class="card"><span class="num">4</span><h3>Crea el siguiente paso</h3><p>Añade una tarea concreta: “Llamar el martes”, con responsable y fecha. Una oportunidad sin siguiente acción se enfría.</p></article>
+      </div>
+      <h3>Ejemplo mínimo</h3>
+      <div class="table-wrap"><table><thead><tr><th>Objeto</th><th>Ejemplo</th><th>Información imprescindible</th></tr></thead><tbody><tr><td>Empresa</td><td>Cliente Ejemplo SL</td><td>Dominio, sector, ciudad</td></tr><tr><td>Persona</td><td>Ana García</td><td>Correo, cargo, empresa</td></tr><tr><td>Oportunidad</td><td>Rehabilitación energética</td><td>25.000 €, Propuesta, 30/09</td></tr><tr><td>Tarea</td><td>Revisar presupuesto con Ana</td><td>Responsable + fecha</td></tr></tbody></table></div>
+    </section>
+
+    <section class="section" id="importar">
+      <span class="kicker">05 · Migrar datos</span>
+      <h2>Importar desde Excel o CSV</h2>
+      <p class="lead">No vuelques todo de golpe. Limpia primero duplicados, correos incorrectos y nombres inconsistentes.</p>
+      <div class="callout"><strong>Orden obligatorio recomendado:</strong><ol><li><b>Companies</b> primero.</li><li><b>People</b> después, relacionándolas mediante el dominio de la empresa.</li><li><b>Opportunities</b> al final.</li></ol></div>
+      <ol class="checklist">
+        <li>Guarda cada tabla como CSV UTF-8.</li>
+        <li>Deja una fila de cabeceras clara: name, email, phone, companyDomain…</li>
+        <li>En Twenty abre el menú de comandos con <b>Ctrl+K</b> o <b>Cmd+K</b>.</li>
+        <li>Selecciona Import e indica el objeto de destino.</li>
+        <li>Mapea cada columna con su campo de Twenty.</li>
+        <li>Revisa una muestra antes de confirmar.</li>
+      </ol>
+      <div class="callout warning"><strong>Evita duplicados.</strong> Twenty usa el correo como identificador único de People y el dominio para Companies. La documentación recomienda archivos de hasta <b>10.000 registros</b> por importación.</div>
+    </section>
+
+    <section class="section" id="correo">
+      <span class="kicker">06 · Memoria comercial</span>
+      <h2>Conectar correo y calendario</h2>
+      <ol class="checklist">
+        <li>Ve a <b>Settings → Accounts → Add account</b>.</li>
+        <li>Elige Google, Microsoft o configura SMTP/CalDAV para otros proveedores.</li>
+        <li>Decide la visibilidad: metadatos, asunto o contenido completo.</li>
+        <li>Selecciona las carpetas que quieres sincronizar.</li>
+        <li>Activa, si te conviene, la creación automática de contactos.</li>
+      </ol>
+      <div class="grid two">
+        <article class="card"><span class="tag green">Sí sincroniza</span><h3>Relaciones externas</h3><p>Correos y reuniones con contactos externos se vinculan a Personas, Empresas y Oportunidades.</p></article>
+        <article class="card"><span class="tag yellow">No sincroniza</span><h3>Privacidad interna</h3><p>Los correos entre compañeros del mismo dominio y las listas de distribución se excluyen.</p></article>
+      </div>
+      <div class="callout tip"><strong>Limitación actual:</strong> el manual de usuario indica que la interfaz sirve para leer el historial; para contestar, Twenty abre el hilo en Gmail u Outlook. Los <b>workflows</b> sí pueden enviar correos automáticos mediante una cuenta conectada.</div>
+    </section>
+
+    <section class="section" id="pipeline">
+      <span class="kicker">07 · El tablero que importa</span>
+      <h2>Crear el pipeline comercial</h2>
+      <p class="lead">En Opportunities cambia la vista a <b>Kanban</b>. Cada columna representa una fase y cada tarjeta, una operación.</p>
+      <div class="flow"><div class="step">Prospección</div><div class="step">Contacto</div><div class="step">Propuesta</div><div class="step">Negociación</div><div class="step">Ganada / Perdida</div></div>
+      <ol class="checklist">
+        <li>Abre el selector de vista y pulsa <b>+ Add view</b>.</li>
+        <li>En <b>Options</b>, escoge el diseño <b>Kanban</b>.</li>
+        <li>Usa el campo Stage como columnas.</li>
+        <li>Muestra en las tarjetas importe, fecha prevista y responsable.</li>
+        <li>Arrastra una tarjeta para cambiarla de etapa.</li>
+        <li>Añade suma de importes en cada columna para ver el valor del pipeline.</li>
+      </ol>
+      <div class="callout warning"><strong>No confundas actividad con avance.</strong> Una llamada no es una fase. Define etapas que representen un cambio real y verificable en la venta.</div>
+    </section>
+
+    <section class="section" id="automatizar">
+      <span class="kicker">08 · Cuando el proceso ya funciona</span>
+      <h2>Automatizaciones útiles</h2>
+      <p class="lead">Todo workflow empieza con un <b>disparador</b>: registro creado, actualizado, eliminado, ejecución manual, horario programado o webhook externo.</p>
+      <div class="grid">
+        <article class="card"><span class="tag">Seguimiento</span><h3>Oportunidad parada</h3><p>Cada mañana busca operaciones sin actualizar durante 10 días y avisa al responsable.</p></article>
+        <article class="card"><span class="tag">Onboarding</span><h3>Venta ganada</h3><p>Cuando una oportunidad pasa a Ganada, cambia la empresa a Cliente y crea tareas de arranque.</p></article>
+        <article class="card"><span class="tag">Captación</span><h3>Nuevo contacto</h3><p>Cuando se crea una persona, asigna responsable, etiqueta el origen y envía un correo de bienvenida.</p></article>
+      </div>
+      <h3>Ejemplo: alerta de operación estancada</h3>
+      <div class="flow"><div class="step">Horario diario</div><div class="step">Buscar oportunidades</div><div class="step">Filtrar +10 días</div><div class="step">Crear resumen</div><div class="step">Enviar aviso</div></div>
+      <div class="callout tip"><strong>Con n8n:</strong> puedes integrar Twenty mediante API o webhooks con formularios, WhatsApp, Supabase, Drive y tus agentes. Guarda las claves en credenciales seguras; nunca dentro de un nodo de texto o un documento compartido.</div>
+    </section>
+
+    <section class="section" id="instalar">
+      <span class="kicker">09 · Para quien quiere control</span>
+      <h2>Autoalojar con Docker</h2>
+      <p class="lead">Necesitas Docker y Docker Compose actualizados, al menos <b>2 GB de RAM</b> y conocimientos básicos de servidor. Para producción utiliza dominio, proxy inverso y HTTPS.</p>
+      <h3>Instalación rápida oficial</h3>
+      <div class="codebox"><button class="copy" data-copy="install">COPIAR</button><code id="install">bash &lt;(curl -sL https://raw.githubusercontent.com/twentyhq/twenty/main/packages/twenty-docker/scripts/install.sh)</code></div>
+      <p>Cuando termine, abre <code>http://localhost:3000</code> si lo has instalado en tu ordenador.</p>
+      <h3>Instalación manual resumida</h3>
+      <ol class="checklist">
+        <li>Descarga el archivo <code>.env.example</code> y renómbralo como <code>.env</code>.</li>
+        <li>Genera una clave con <code>openssl rand -base64 32</code> y guárdala como <code>ENCRYPTION_KEY</code>.</li>
+        <li>Define una contraseña robusta para PostgreSQL.</li>
+        <li>Descarga el <code>docker-compose.yml</code> oficial.</li>
+        <li>Arranca con <code>docker compose up -d</code>.</li>
+        <li>Para acceso externo configura <code>SERVER_URL</code> y HTTPS.</li>
+      </ol>
+      <div class="callout warning"><strong>No pierdas la ENCRYPTION_KEY.</strong> Sin ella no podrás acceder a secretos cifrados guardados en la base de datos, como tokens OAuth, variables privadas o claves TOTP.</div>
+    </section>
+
+    <section class="section" id="seguridad">
+      <span class="kicker">10 · Lo que evita disgustos</span>
+      <h2>Copias y actualizaciones</h2>
+      <h3>Copia de la base de datos</h3>
+      <div class="codebox"><button class="copy" data-copy="backup">COPIAR</button><code id="backup">docker exec twenty-postgres pg_dump -U postgres twenty &gt; backup_$(date +%Y%m%d).sql</code></div>
+      <h3>Antes de actualizar</h3>
+      <ol class="checklist">
+        <li>Haz una copia y comprueba que puede restaurarse.</li>
+        <li>Guarda también el archivo <code>.env</code> y la clave de cifrado en un gestor seguro.</li>
+        <li>Revisa las notas de la versión que vas a instalar.</li>
+        <li>Detén Twenty, cambia la etiqueta de versión y vuelve a arrancar.</li>
+      </ol>
+      <div class="grid two">
+        <article class="card"><h3>Copias 3-2-1</h3><p>Tres copias, en dos soportes distintos y una fuera del servidor. Cifra los ficheros y conserva diarios, semanales y mensuales.</p></article>
+        <article class="card"><h3>RGPD</h3><p>Define base jurídica, minimización, plazos de conservación, usuarios autorizados y procedimiento de ejercicio de derechos. Autoalojar no resuelve por sí solo el cumplimiento.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="plan">
+      <span class="kicker">11 · Ruta rápida</span>
+      <h2>Twenty listo en 30 minutos</h2>
+      <div class="timeline">
+        <article><span class="minute">MIN 0–5</span><h3>Crear el espacio</h3><p>Accede a Cloud o a tu instalación y configura nombre, moneda, idioma y zona horaria.</p></article>
+        <article><span class="minute">MIN 5–10</span><h3>Ajustar campos</h3><p>Define tipo de cliente, origen, responsable, sector y las etapas del pipeline.</p></article>
+        <article><span class="minute">MIN 10–15</span><h3>Crear un caso real</h3><p>Añade una empresa, una persona, una oportunidad y una tarea.</p></article>
+        <article><span class="minute">MIN 15–22</span><h3>Conectar correo</h3><p>Selecciona visibilidad, carpetas y política de creación automática de contactos.</p></article>
+        <article><span class="minute">MIN 22–30</span><h3>Montar el tablero</h3><p>Crea la vista Kanban y asegúrate de que cada oportunidad tiene responsable y siguiente acción.</p></article>
+      </div>
+      <div class="callout"><strong>La prueba definitiva:</strong> otra persona del equipo debe poder abrir una empresa y comprender en menos de un minuto quién es, qué se le ha ofrecido y qué hay que hacer después.</div>
+    </section>
+
+    <section class="section">
+      <span class="kicker">12 · Errores frecuentes</span>
+      <h2>No hagas esto</h2>
+      <div class="grid">
+        <article class="card"><h3>Importarlo todo</h3><p>Un CRM lleno de datos viejos y duplicados se abandona enseguida.</p></article>
+        <article class="card"><h3>Crear 30 campos</h3><p>Empieza con lo imprescindible. Añade un campo cuando exista una decisión que dependa de él.</p></article>
+        <article class="card"><h3>Automatizar el caos</h3><p>Primero valida el proceso manual; luego automatiza sus pasos repetitivos.</p></article>
+        <article class="card"><h3>Olvidar el responsable</h3><p>Cada oportunidad y tarea debe tener una persona dueña del siguiente paso.</p></article>
+        <article class="card"><h3>No hacer copias</h3><p>Un volumen Docker no sustituye una copia externa probada.</p></article>
+        <article class="card"><h3>Compartir secretos</h3><p>No publiques el archivo .env, la ENCRYPTION_KEY, contraseñas ni claves API.</p></article>
+      </div>
+    </section>
+
+    <section class="section sources">
+      <span class="kicker">Fuentes oficiales</span>
+      <h2>Documentación utilizada</h2>
+      <a href="https://github.com/twentyhq/twenty" target="_blank" rel="noopener">Repositorio oficial de Twenty en GitHub →</a>
+      <a href="https://docs.twenty.com/getting-started/quickstart" target="_blank" rel="noopener">Inicio rápido oficial →</a>
+      <a href="https://docs.twenty.com/user-guide/introduction" target="_blank" rel="noopener">Manual oficial de usuario →</a>
+      <a href="https://docs.twenty.com/user-guide/data-model/overview" target="_blank" rel="noopener">Modelo de datos →</a>
+      <a href="https://docs.twenty.com/user-guide/data-migration/how-tos/import-contacts-via-csv" target="_blank" rel="noopener">Importar contactos por CSV →</a>
+      <a href="https://docs.twenty.com/user-guide/calendar-emails/overview" target="_blank" rel="noopener">Correo y calendario →</a>
+      <a href="https://docs.twenty.com/user-guide/workflows/overview" target="_blank" rel="noopener">Workflows →</a>
+      <a href="https://docs.twenty.com/developers/self-host/capabilities/docker-compose" target="_blank" rel="noopener">Instalación con Docker Compose →</a>
+      <a href="https://docs.twenty.com/developers/self-host/capabilities/upgrade-guide" target="_blank" rel="noopener">Guía oficial de actualización →</a>
+      <p class="print-note">Twenty evoluciona rápidamente. Antes de instalar o actualizar, revisa siempre la documentación y las notas de versión oficiales.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid"><div><h2>Manual práctico de Aurelia</h2><p>Para aprender tecnología sin humo, con criterio humano y pasos que se pueden aplicar.</p></div><div><p><a href="https://www.skool.com/frikis" target="_blank" rel="noopener"><b>Club de los Frikis →</b></a></p><p><a href="https://www.linkedin.com/in/mariajesuspuertaangulo" target="_blank" rel="noopener">LinkedIn de María Jesús →</a></p><p><a href="https://www.mariajesuspuertaangulo.com" target="_blank" rel="noopener">Web →</a></p></div></div>
+    <div class="wrap"><p class="small">Contenido educativo. Verifica la configuración de seguridad, privacidad y cumplimiento antes de usar un CRM con datos personales reales.</p></div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[data-copy]').forEach(function(button){button.addEventListener('click',function(){var id=button.getAttribute('data-copy');var text=document.getElementById(id).innerText;navigator.clipboard.writeText(text).then(function(){var old=button.textContent;button.textContent='COPIADO ✓';setTimeout(function(){button.textContent=old},1600)})})});
+  </script>
+</body>
+</html>
