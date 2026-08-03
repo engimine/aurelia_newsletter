@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manual completo en español de Firecrawl PDF Inspector: clasificar PDF, convertir a Markdown, decidir cuándo usar OCR e integrarlo con Python, Node, navegador, n8n y RAG.">
+  <meta name="theme-color" content="#120d0a">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="PDF Inspector desde cero · Manual de Aurelia">
+  <meta property="og:description" content="Detecta qué PDF necesita OCR, extrae texto localmente y conviértelo en Markdown limpio.">
+  <meta property="og:url" content="https://engimine.github.io/aurelia_newsletter/recursos/manual-pdf-inspector/">
+  <meta property="og:image" content="https://engimine.github.io/aurelia_newsletter/recursos/manual-pdf-inspector/miniatura-linkedin.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDF Inspector desde cero · Manual de Aurelia">
+  <meta name="twitter:description" content="No pagues OCR de más: clasifica y extrae tus PDF localmente.">
+  <meta name="twitter:image" content="https://engimine.github.io/aurelia_newsletter/recursos/manual-pdf-inspector/miniatura-linkedin.jpg">
+  <title>Manual de PDF Inspector desde cero · Aurelia</title>
+  <style>
+    :root{--ink:#17110e;--muted:#6c5f58;--paper:#fff8ed;--white:#fff;--orange:#ff5a1f;--amber:#ffb000;--pink:#ed0a69;--blue:#00a7ff;--green:#18a86b;--line:#e4d5c8;--shadow:8px 8px 0 var(--ink)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}a{color:inherit}img{max-width:100%}button{font:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+    .hero{background:radial-gradient(circle at 75% 20%,#402014 0,#17110e 45%,#080707 100%);color:#fff;overflow:hidden;position:relative}.hero:before{content:"PDF";position:absolute;right:-3%;bottom:-10%;font-size:23rem;font-weight:1000;line-height:1;color:rgba(255,90,31,.08);letter-spacing:-.08em}.hero-grid{min-height:680px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:56px;padding:68px 0;position:relative;z-index:1}.eyebrow{display:inline-flex;align-items:center;border:2px solid var(--amber);border-radius:999px;padding:7px 13px;color:var(--amber);font-size:.8rem;font-weight:950;letter-spacing:.09em;text-transform:uppercase}.hero h1{margin:22px 0 18px;font-size:clamp(3.3rem,8vw,7.2rem);line-height:.82;letter-spacing:-.07em;text-transform:uppercase}.hero h1 span{color:var(--orange)}.hero p{font-size:1.2rem;max-width:700px;color:#f7ede8}.button{display:inline-flex;align-items:center;justify-content:center;margin-top:18px;padding:14px 20px;border:2px solid var(--ink);border-radius:999px;background:var(--amber);color:var(--ink);font-weight:1000;text-decoration:none;box-shadow:5px 5px 0 var(--pink)}.button:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--pink)}
+    .aurelia-card{background:var(--orange);color:#fff;border:4px solid #fff;border-radius:34px;padding:28px;transform:rotate(2deg);box-shadow:15px 15px 0 var(--pink)}.aurelia-face{width:92px;height:92px;border:3px solid var(--ink);border-radius:50%;background:var(--amber);display:grid;place-items:center;font-size:3.4rem;margin-bottom:18px}.aurelia-card strong{display:block;font-size:1.55rem;line-height:1.15}.aurelia-card p{font-size:1rem}.topnav{position:sticky;top:0;z-index:20;background:rgba(255,248,237,.95);backdrop-filter:blur(12px);border-bottom:2px solid var(--ink)}.topnav .wrap{display:flex;align-items:center;gap:10px;overflow:auto;padding:10px 0;scrollbar-width:none}.topnav a{white-space:nowrap;text-decoration:none;font-weight:850;font-size:.84rem;padding:7px 10px;border-radius:999px}.topnav a:hover{background:var(--amber)}
+    .cover{margin:38px auto 0;border:3px solid var(--ink);border-radius:28px;overflow:hidden;background:var(--ink);box-shadow:10px 10px 0 var(--orange)}.cover img{width:100%;height:auto;display:block}.cover figcaption{padding:10px 16px;background:var(--amber);font-size:.82rem;font-weight:900;text-align:center}main{padding:55px 0 90px}.section{scroll-margin-top:76px;margin:0 0 72px}.kicker{font-size:.78rem;font-weight:950;color:var(--orange);text-transform:uppercase;letter-spacing:.12em}.section h2{font-size:clamp(2.1rem,4.6vw,4rem);line-height:1;letter-spacing:-.05em;margin:6px 0 22px}.section h3{font-size:1.45rem;line-height:1.2;margin:28px 0 10px}.lead{font-size:1.16rem;max-width:880px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.grid.two{grid-template-columns:repeat(2,1fr)}.card{background:var(--white);border:2px solid var(--ink);border-radius:22px;padding:24px;box-shadow:5px 5px 0 var(--ink)}.card h3{margin:7px 0 10px}.num{width:38px;height:38px;display:grid;place-items:center;background:var(--orange);color:#fff;border-radius:50%;font-weight:950}.tag{display:inline-block;background:#ffe4d8;color:#8b2700;padding:5px 9px;border-radius:999px;font-size:.76rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.tag.blue{background:#dff4ff;color:#006da4}.tag.green{background:#ddf8e9;color:#087344}.tag.pink{background:#ffe0ed;color:#a80049}.choice{padding:30px}.choice.recommended{background:var(--amber)}
+    .callout{border:3px solid var(--ink);background:#fff;padding:24px 26px;border-radius:22px;box-shadow:var(--shadow);margin:28px 0}.callout.warning{background:#fff0f4}.callout.tip{background:#eaf7ff}.callout.success{background:#e9faef}.callout strong:first-child{font-size:1.1rem}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:stretch;margin:28px 0}.flow .step{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:17px;text-align:center;font-weight:900;position:relative}.flow .step:not(:last-child):after{content:"→";position:absolute;right:-15px;top:50%;transform:translateY(-50%);z-index:2;background:var(--paper);padding:0 2px}.flow .step.orange{background:#fff0e8}.flow .step.blue{background:#e9f7ff}
+    .table-wrap{overflow:auto;border:2px solid var(--ink);border-radius:20px;background:#fff}table{border-collapse:collapse;width:100%;min-width:700px}th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--ink);color:#fff}tr:last-child td{border-bottom:0}.checklist{list-style:none;padding:0;margin:20px 0}.checklist li{background:#fff;border:1.5px solid var(--ink);border-radius:14px;margin:9px 0;padding:12px 14px 12px 46px;position:relative}.checklist li:before{content:"✓";position:absolute;left:13px;top:10px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:var(--green);color:white;font-weight:1000}
+    .codebox{position:relative;background:#121016;color:#f8edf8;border-radius:18px;padding:24px;margin:15px 0;overflow:auto;border-left:6px solid var(--orange)}.codebox code{font-family:"SFMono-Regular",Consolas,monospace;font-size:.84rem;white-space:pre}.copy{position:absolute;right:10px;top:10px;border:1px solid #918893;background:#2c2630;color:white;border-radius:8px;padding:6px 9px;cursor:pointer}.copy:hover{background:var(--orange)}code.inline{background:#eee4dc;padding:2px 6px;border-radius:6px}.timeline{border-left:4px solid var(--ink);margin-left:16px;padding-left:28px}.timeline article{position:relative;margin:0 0 28px}.timeline article:before{content:"";position:absolute;width:18px;height:18px;border:4px solid var(--paper);background:var(--orange);border-radius:50%;left:-39px;top:3px}.minute{font-weight:950;color:var(--orange)}.sources a{display:block;padding:11px 0;border-bottom:1px solid var(--line);font-weight:750}.footer{background:var(--ink);color:#fff;padding:46px 0}.footer-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:30px}.footer a{color:var(--amber)}.small{font-size:.87rem;color:var(--muted)}.footer .small{color:#c8bdca}.print-note{font-size:.82rem;color:var(--muted);margin-top:24px}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;min-height:auto}.aurelia-card{max-width:520px;margin-bottom:20px}.grid,.grid.two{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr}.flow .step:not(:last-child):after{content:"↓";right:50%;top:auto;bottom:-19px;transform:translateX(50%)}.hero:before{font-size:15rem}}
+    @media(max-width:640px){.hero-grid{padding:54px 0}.hero h1{font-size:3.55rem}.grid,.grid.two{grid-template-columns:1fr}.aurelia-card{transform:none}.section{margin-bottom:56px}.section h2{font-size:2.42rem}.card,.callout{padding:20px}.footer-grid{grid-template-columns:1fr}.topnav{position:static}.cover{border-radius:18px}}
+    @media print{.topnav,.copy,.button{display:none!important}.hero{background:#fff!important;color:#000!important}.hero p{color:#000}.hero-grid{min-height:0;padding:25px 0}.aurelia-card{box-shadow:none}.section{break-inside:avoid}.card,.callout{box-shadow:none}.footer{background:#fff;color:#000}.footer a{color:#000}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Manual completo · revisado 03/08/2026</span>
+        <h1>PDF Inspector<br><span>desde cero</span></h1>
+        <p>Cómo saber si un PDF necesita OCR, extraer su contenido localmente y convertirlo en Markdown limpio para IA, automatizaciones y sistemas RAG.</p>
+        <a class="button" href="#que-es">ABRIR EL MANUAL ↓</a>
+      </div>
+      <aside class="aurelia-card">
+        <div class="aurelia-face" aria-hidden="true">👵🏻</div>
+        <strong>Aurelia lo explica sin humo:</strong>
+        <p>Antes de pagar para que una IA “lea” cada PDF, comprueba si el texto ya está dentro. PDF Inspector separa los documentos fáciles de los que realmente necesitan OCR.</p>
+        <p><b>No es un programa con botones.</b> Es una biblioteca para terminal, Python, Node.js, Rust y navegador.</p>
+      </aside>
+    </div>
+  </header>
+
+  <nav class="topnav" aria-label="Índice del manual">
+    <div class="wrap"><a href="#que-es">Qué es</a><a href="#elegir">Elegir ruta</a><a href="#cli">Terminal</a><a href="#python">Python</a><a href="#node">Node</a><a href="#wasm">Navegador</a><a href="#resultados">Resultados</a><a href="#ocr">OCR inteligente</a><a href="#n8n">n8n y RAG</a><a href="#errores">Problemas</a><a href="#seguridad">Seguridad</a><a href="#plan">Plan rápido</a></div>
+  </nav>
+
+  <figure class="wrap cover">
+    <img src="miniatura-linkedin.jpg" alt="Aurelia recomienda PDF Inspector: no pagues OCR de más" width="1200" height="627">
+    <figcaption>Una guía práctica para convertir PDF en datos útiles sin enviar todos los documentos a un servicio de OCR.</figcaption>
+  </figure>
+
+  <main class="wrap">
+    <section class="section" id="que-es">
+      <span class="kicker">01 · La idea esencial</span>
+      <h2>¿Qué hace PDF Inspector?</h2>
+      <p class="lead"><b>PDF Inspector</b> es una biblioteca abierta de Firecrawl escrita en Rust. Clasifica documentos, extrae texto respetando su posición y convierte PDF con texto nativo en Markdown estructurado, sin utilizar OCR.</p>
+      <div class="grid">
+        <article class="card"><span class="tag">Clasifica</span><h3>¿Qué tipo de PDF es?</h3><p>Distingue documentos con texto, escaneados, basados en imágenes o mixtos, y devuelve una puntuación de confianza.</p></article>
+        <article class="card"><span class="tag blue">Extrae</span><h3>Texto con estructura</h3><p>Reconoce columnas, títulos, listas, enlaces, estilos, tablas y orden de lectura.</p></article>
+        <article class="card"><span class="tag green">Decide</span><h3>¿Qué páginas van a OCR?</h3><p>Devuelve las páginas que no tienen una capa de texto fiable para procesar solo esas con OCR.</p></article>
+      </div>
+      <div class="callout warning"><strong>Lo que no hace:</strong> PDF Inspector <b>no incluye OCR</b>. Si el archivo es una fotografía, un escaneo o tiene una codificación rota, necesitarás conectarlo a Tesseract, Google Document AI, Azure, AWS Textract, Mistral OCR u otro sistema.</div>
+      <h3>¿Para qué sirve?</h3>
+      <div class="grid">
+        <article class="card"><h3>RAG y agentes</h3><p>Convierte informes, normativa, papers y manuales en Markdown antes de fragmentarlos y generar embeddings.</p></article>
+        <article class="card"><h3>Facturas y contratos</h3><p>Extrae documentos con texto real localmente y reserva el OCR para páginas escaneadas.</p></article>
+        <article class="card"><h3>Privacidad</h3><p>La extracción local evita enviar a terceros los PDF que ya se pueden leer desde su propia estructura.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="elegir">
+      <span class="kicker">02 · Antes de instalar</span>
+      <h2>Elige tu forma de usarlo</h2>
+      <div class="table-wrap"><table><thead><tr><th>Ruta</th><th>Ideal para</th><th>Dificultad</th><th>Instalación</th></tr></thead><tbody><tr><td><b>Python</b></td><td>IA, datos, RAG, scripts y prototipos</td><td>Baja-media</td><td><code>pip install pdf-inspector</code></td></tr><tr><td><b>Node.js</b></td><td>Aplicaciones web, APIs y automatizaciones JS</td><td>Media</td><td><code>npm install @firecrawl/pdf-inspector</code></td></tr><tr><td><b>Terminal</b></td><td>Convertir archivos manualmente o en scripts shell</td><td>Media</td><td><code>cargo install pdf-inspector</code></td></tr><tr><td><b>WebAssembly</b></td><td>Procesar dentro del navegador sin subir el PDF</td><td>Media-alta</td><td><code>npm install @firecrawl/pdf-inspector-wasm</code></td></tr><tr><td><b>Rust</b></td><td>Servicios de máximo rendimiento</td><td>Alta</td><td><code>cargo add pdf-inspector</code></td></tr></tbody></table></div>
+      <div class="callout tip"><strong>Mi recomendación:</strong> empieza por <b>Python</b> si vas a crear un RAG o una automatización; usa el <b>CLI</b> si solo quieres probar con varios documentos desde tu ordenador.</div>
+    </section>
+
+    <section class="section" id="cli">
+      <span class="kicker">03 · La prueba más directa</span>
+      <h2>Usarlo desde la terminal</h2>
+      <p class="lead">La herramienta de terminal requiere Rust y Cargo. Instala Rust desde su web oficial y después instala PDF Inspector:</p>
+      <div class="codebox"><button class="copy" data-copy="cli-install">COPIAR</button><code id="cli-install">cargo install pdf-inspector</code></div>
+      <h3>Convertir un PDF a Markdown</h3>
+      <div class="codebox"><button class="copy" data-copy="cli-basic">COPIAR</button><code id="cli-basic">pdf2md documento.pdf &gt; documento.md</code></div>
+      <h3>Comandos útiles</h3>
+      <div class="table-wrap"><table><thead><tr><th>Objetivo</th><th>Comando</th></tr></thead><tbody><tr><td>Obtener JSON para otra herramienta</td><td><code>pdf2md documento.pdf --json</code></td></tr><tr><td>Solo Markdown, sin cabeceras técnicas</td><td><code>pdf2md documento.pdf --raw</code></td></tr><tr><td>Salida más compacta para ahorrar tokens</td><td><code>pdf2md documento.pdf --compact</code></td></tr><tr><td>Añadir marcadores de página</td><td><code>pdf2md documento.pdf --pages</code></td></tr><tr><td>Procesar páginas concretas</td><td><code>pdf2md documento.pdf --select-pages 1,3,5-10</code></td></tr><tr><td>Clasificar sin extraer texto</td><td><code>detect-pdf documento.pdf --json</code></td></tr><tr><td>Analizar tablas y columnas</td><td><code>detect-pdf documento.pdf --analyze --json</code></td></tr></tbody></table></div>
+      <div class="callout success"><strong>La primera prueba:</strong> utiliza un PDF generado desde Word y otro escaneado con el móvil. El primero debería producir Markdown; el segundo debería quedar marcado para OCR.</div>
+    </section>
+
+    <section class="section" id="python">
+      <span class="kicker">04 · Ruta recomendada para IA</span>
+      <h2>Usarlo con Python</h2>
+      <h3>1. Crear un entorno e instalar</h3>
+      <div class="codebox"><button class="copy" data-copy="py-install">COPIAR</button><code id="py-install">python -m venv .venv
+# Windows:
+.venv\Scripts\activate
+# macOS / Linux:
+source .venv/bin/activate
+
+python -m pip install --upgrade pip
+pip install pdf-inspector</code></div>
+      <p>El paquete oficial publica ruedas precompiladas para CPython 3.8 o superior en las principales plataformas indicadas en su documentación. En otras plataformas puede ser necesario compilar con Rust.</p>
+      <h3>2. Script completo: PDF → Markdown u OCR</h3>
+      <div class="codebox"><button class="copy" data-copy="py-script">COPIAR</button><code id="py-script">from pathlib import Path
+import pdf_inspector
+
+origen = Path("documento.pdf")
+salida = origen.with_suffix(".md")
+
+resultado = pdf_inspector.process_pdf(str(origen))
+
+print("Tipo:", resultado.pdf_type)
+print("Confianza:", resultado.confidence)
+print("Páginas:", resultado.page_count)
+print("Necesitan OCR:", resultado.pages_needing_ocr)
+
+if resultado.markdown:
+    salida.write_text(resultado.markdown, encoding="utf-8")
+    print("Markdown guardado en:", salida)
+else:
+    print("No hay Markdown fiable. Envía las páginas indicadas a OCR.")</code></div>
+      <h3>3. Solo detectar, sin extraer</h3>
+      <div class="codebox"><button class="copy" data-copy="py-detect">COPIAR</button><code id="py-detect">import pdf_inspector
+
+resultado = pdf_inspector.detect_pdf("documento.pdf")
+
+if resultado.pdf_type == "text_based":
+    print("Se puede extraer localmente")
+else:
+    print("Páginas para OCR:", resultado.pages_needing_ocr)</code></div>
+      <div class="callout tip"><strong>También admite bytes:</strong> utiliza <code>process_pdf_bytes()</code> cuando el archivo llega desde una API, un formulario o un almacenamiento y no quieres guardarlo primero en disco.</div>
+    </section>
+
+    <section class="section" id="node">
+      <span class="kicker">05 · Para aplicaciones JavaScript</span>
+      <h2>Usarlo con Node.js</h2>
+      <div class="codebox"><button class="copy" data-copy="node-install">COPIAR</button><code id="node-install">mkdir prueba-pdf
+cd prueba-pdf
+npm init -y
+npm install @firecrawl/pdf-inspector</code></div>
+      <h3>Script completo</h3>
+      <div class="codebox"><button class="copy" data-copy="node-script">COPIAR</button><code id="node-script">import { readFileSync, writeFileSync } from 'node:fs';
+import { processPdf } from '@firecrawl/pdf-inspector';
+
+const pdf = readFileSync('documento.pdf');
+const resultado = processPdf(pdf);
+
+console.log('Tipo:', resultado.pdfType);
+console.log('Confianza:', resultado.confidence);
+console.log('Páginas para OCR:', resultado.pagesNeedingOcr);
+
+if (resultado.markdown) {
+  writeFileSync('documento.md', resultado.markdown, 'utf8');
+  console.log('Markdown guardado');
+}</code></div>
+      <div class="callout warning"><strong>Compatibilidad:</strong> la documentación del paquete Node enumera binarios precompilados para Linux x64, macOS ARM64 y Windows x64. Comprueba tu arquitectura si la instalación falla.</div>
+    </section>
+
+    <section class="section" id="wasm">
+      <span class="kicker">06 · El PDF no sale del navegador</span>
+      <h2>Usarlo con WebAssembly</h2>
+      <p class="lead">La versión WASM ejecuta el parser dentro del navegador. Los bytes del PDF no se suben a un servidor por el hecho de usar la biblioteca.</p>
+      <div class="codebox"><button class="copy" data-copy="wasm-install">COPIAR</button><code id="wasm-install">npm install @firecrawl/pdf-inspector-wasm</code></div>
+      <div class="codebox"><button class="copy" data-copy="wasm-script">COPIAR</button><code id="wasm-script">import init, { processPdf } from '@firecrawl/pdf-inspector-wasm';
+
+await init();
+
+const respuesta = await fetch('/documento.pdf');
+const pdf = new Uint8Array(await respuesta.arrayBuffer());
+const resultado = processPdf(pdf, {
+  profile: 'compact',
+  includePageMarkers: true
+});
+
+console.log(resultado.pdfType);
+console.log(resultado.markdown);</code></div>
+      <div class="callout tip"><strong>Documentos grandes:</strong> el procesamiento es síncrono después de <code>init()</code>. La documentación recomienda utilizar un <b>Web Worker</b> para no bloquear la interfaz.</div>
+    </section>
+
+    <section class="section" id="resultados">
+      <span class="kicker">07 · Entender la respuesta</span>
+      <h2>Los cuatro tipos de PDF</h2>
+      <div class="grid two">
+        <article class="card"><span class="tag green">TextBased</span><h3>Texto nativo</h3><p>El documento contiene operadores de texto. Es el mejor candidato para extracción local rápida.</p></article>
+        <article class="card"><span class="tag pink">Scanned</span><h3>Documento escaneado</h3><p>Las páginas se comportan como fotografías del papel. Necesitan OCR.</p></article>
+        <article class="card"><span class="tag blue">ImageBased</span><h3>Basado en imágenes</h3><p>Predominan imágenes sin una capa de texto útil. Debe pasar por visión u OCR.</p></article>
+        <article class="card"><span class="tag">Mixed</span><h3>Documento mixto</h3><p>Algunas páginas se extraen directamente y otras deben enrutarse a OCR.</p></article>
+      </div>
+      <h3>Campos importantes</h3>
+      <div class="table-wrap"><table><thead><tr><th>Campo</th><th>Qué significa</th><th>Qué hacer</th></tr></thead><tbody><tr><td><code>pdf_type</code> / <code>pdfType</code></td><td>Clasificación general</td><td>Elegir extracción u OCR</td></tr><tr><td><code>confidence</code></td><td>Confianza entre 0 y 1</td><td>Aplicar un umbral prudente</td></tr><tr><td><code>pages_needing_ocr</code></td><td>Páginas sin texto fiable</td><td>Enviar solo esas a OCR</td></tr><tr><td><code>has_encoding_issues</code></td><td>Posible fuente o codificación rota</td><td>Validar el texto y considerar OCR</td></tr><tr><td><code>pages_with_tables</code></td><td>Páginas con tablas detectadas</td><td>Revisar el Markdown resultante</td></tr><tr><td><code>is_complex_layout</code></td><td>Columnas o estructura compleja</td><td>Aplicar controles de calidad</td></tr></tbody></table></div>
+      <div class="callout warning"><strong>Cuidado con la numeración:</strong> algunas respuestas ligeras de clasificación documentan páginas en base 0, mientras que otros resultados agregados utilizan base 1. Comprueba el tipo de función antes de mostrar o enviar páginas a OCR.</div>
+    </section>
+
+    <section class="section" id="ocr">
+      <span class="kicker">08 · El ahorro real</span>
+      <h2>Enrutamiento inteligente de OCR</h2>
+      <div class="flow"><div class="step">Llega el PDF</div><div class="step orange">PDF Inspector clasifica</div><div class="step">¿Texto fiable?</div><div class="step orange">Sí → Markdown local</div><div class="step blue">No → OCR selectivo</div></div>
+      <h3>Regla de decisión recomendada</h3>
+      <div class="codebox"><button class="copy" data-copy="routing">COPIAR</button><code id="routing">SI tipo = text_based
+Y confianza alta
+Y no hay problemas de codificación:
+    usar Markdown local
+SI NO:
+    enviar solo pages_needing_ocr al OCR
+    unir los resultados respetando el orden de páginas</code></div>
+      <div class="callout tip"><strong>No confíes únicamente en el tipo.</strong> Valida que el texto tenga longitud razonable, caracteres legibles y una estructura coherente. Un PDF puede contener una capa de texto defectuosa.</div>
+      <p>Según el benchmark publicado por el propio proyecto el 31 de julio de 2026, PDF Inspector obtuvo una puntuación global de 0,875 y procesó el corpus de 200 documentos en 0,470 s bajo su configuración de prueba, con OCR desactivado. Es una medición del proyecto: reproduce el ensayo con tus propios documentos antes de tomar decisiones de producción.</p>
+    </section>
+
+    <section class="section" id="n8n">
+      <span class="kicker">09 · La arquitectura friki</span>
+      <h2>n8n, Supabase y RAG</h2>
+      <p class="lead">PDF Inspector encaja como filtro de entrada: evita gastar OCR y tokens en documentos que ya contienen texto estructurado.</p>
+      <div class="flow"><div class="step">Formulario / Drive</div><div class="step orange">Inspector PDF</div><div class="step">Switch por tipo</div><div class="step blue">Markdown u OCR</div><div class="step">Chunks → Supabase</div></div>
+      <h3>Flujo recomendado</h3>
+      <ol class="checklist">
+        <li>Recibe el archivo mediante formulario, Drive, correo o webhook.</li>
+        <li>Guarda el PDF en un almacenamiento temporal con identificador único.</li>
+        <li>Llama a un microservicio Python/Node que ejecute PDF Inspector.</li>
+        <li>Usa un nodo Switch con <code>pdf_type</code>, confianza y errores de codificación.</li>
+        <li>Ruta A: Markdown local. Ruta B: OCR únicamente para las páginas marcadas.</li>
+        <li>Normaliza, divide por títulos/páginas y genera embeddings.</li>
+        <li>Guarda texto, página, documento, hash, permisos y procedencia en Supabase.</li>
+      </ol>
+      <div class="callout success"><strong>En n8n autoalojado:</strong> puedes preparar un contenedor con el CLI o un servicio lateral. Para mantener el flujo estable, es preferible exponer una pequeña API interna que reciba bytes y devuelva JSON, en lugar de instalar dependencias nativas dentro de cada nodo.</div>
+      <h3>Respuesta JSON mínima de tu servicio</h3>
+      <div class="codebox"><button class="copy" data-copy="json">COPIAR</button><code id="json">{
+  "document_id": "abc-123",
+  "pdf_type": "mixed",
+  "confidence": 0.94,
+  "page_count": 18,
+  "pages_needing_ocr": [4, 11],
+  "has_encoding_issues": false,
+  "markdown": "# Título..."
+}</code></div>
+    </section>
+
+    <section class="section" id="errores">
+      <span class="kicker">10 · Diagnóstico rápido</span>
+      <h2>Problemas frecuentes</h2>
+      <div class="grid two">
+        <article class="card"><h3>“No se encuentra pdf2md”</h3><p>Comprueba que <code>cargo install</code> terminó y que la carpeta binaria de Cargo está incluida en PATH.</p></article>
+        <article class="card"><h3>El Markdown sale vacío</h3><p>Clasifica el documento. Si está escaneado o basado en imágenes, el resultado esperado es enviarlo a OCR.</p></article>
+        <article class="card"><h3>Caracteres extraños</h3><p>Consulta <code>has_encoding_issues</code>. Algunas fuentes CID carecen de un mapa Unicode fiable.</p></article>
+        <article class="card"><h3>Las columnas se mezclan</h3><p>Revisa <code>is_complex_layout</code> y las páginas con columnas. Compara visualmente antes de ingerir en un RAG.</p></article>
+        <article class="card"><h3>Falla npm</h3><p>Verifica sistema y arquitectura. El paquete Node documenta un conjunto concreto de binarios precompilados.</p></article>
+        <article class="card"><h3>La web se congela</h3><p>Mueve la versión WASM a un Web Worker cuando proceses archivos grandes.</p></article>
+      </div>
+      <h3>Registro avanzado en Rust</h3>
+      <div class="codebox"><button class="copy" data-copy="debug">COPIAR</button><code id="debug">RUST_LOG=pdf_inspector=debug cargo run --bin pdf2md -- documento.pdf &gt; /dev/null</code></div>
+    </section>
+
+    <section class="section" id="seguridad">
+      <span class="kicker">11 · Antes de producción</span>
+      <h2>Privacidad y seguridad</h2>
+      <div class="grid">
+        <article class="card"><h3>Archivos no confiables</h3><p>Limita tamaño, páginas, tiempo y memoria. Procesa documentos externos en un servicio aislado y actualizado.</p></article>
+        <article class="card"><h3>Datos personales</h3><p>Define conservación, borrado, controles de acceso, registro de actividad y base jurídica. Procesar localmente ayuda, pero no sustituye el RGPD.</p></article>
+        <article class="card"><h3>OCR externo</h3><p>Si envías páginas a un proveedor, revisa ubicación, contrato, subencargados, retención y uso de los datos.</p></article>
+      </div>
+      <ul class="checklist">
+        <li>Calcula un hash para detectar duplicados y mantener trazabilidad.</li>
+        <li>No guardes archivos sensibles en carpetas públicas ni en logs.</li>
+        <li>Elimina los temporales al terminar y cifra el almacenamiento.</li>
+        <li>Valida el Markdown antes de usarlo como contexto para una IA.</li>
+        <li>Fija versiones y prueba antes de actualizar.</li>
+      </ul>
+      <div class="callout"><strong>Licencia:</strong> el repositorio se publica bajo licencia MIT. Mantén el aviso de copyright y la licencia cuando redistribuyas el software o partes sustanciales.</div>
+    </section>
+
+    <section class="section" id="plan">
+      <span class="kicker">12 · Ruta práctica</span>
+      <h2>Tu primera prueba en 20 minutos</h2>
+      <div class="timeline">
+        <article><span class="minute">MIN 0–4</span><h3>Prepara dos documentos</h3><p>Uno creado desde Word y otro escaneado con el móvil.</p></article>
+        <article><span class="minute">MIN 4–8</span><h3>Instala Python y el paquete</h3><p>Crea el entorno virtual e instala <code>pdf-inspector</code>.</p></article>
+        <article><span class="minute">MIN 8–12</span><h3>Ejecuta la clasificación</h3><p>Compara tipo, confianza y páginas que necesitan OCR.</p></article>
+        <article><span class="minute">MIN 12–16</span><h3>Genera Markdown</h3><p>Abre el resultado y comprueba títulos, orden de lectura y tablas.</p></article>
+        <article><span class="minute">MIN 16–20</span><h3>Diseña la regla</h3><p>Decide el umbral y la ruta OCR utilizando documentos reales de tu actividad.</p></article>
+      </div>
+      <div class="callout success"><strong>Prueba superada:</strong> el documento nativo produce Markdown legible y el escaneado no finge tener texto; queda correctamente marcado para OCR.</div>
+    </section>
+
+    <section class="section sources">
+      <span class="kicker">Fuentes oficiales</span>
+      <h2>Documentación utilizada</h2>
+      <a href="https://github.com/firecrawl/pdf-inspector" target="_blank" rel="noopener">Repositorio oficial de PDF Inspector →</a>
+      <a href="https://github.com/firecrawl/pdf-inspector/blob/main/README.md" target="_blank" rel="noopener">README, funciones, CLI y benchmark →</a>
+      <a href="https://github.com/firecrawl/pdf-inspector/blob/main/docs/python.md" target="_blank" rel="noopener">API oficial para Python →</a>
+      <a href="https://github.com/firecrawl/pdf-inspector/blob/main/napi/README.md" target="_blank" rel="noopener">API oficial para Node.js y Bun →</a>
+      <a href="https://github.com/firecrawl/pdf-inspector/blob/main/wasm/README.md" target="_blank" rel="noopener">Uso en navegador con WebAssembly →</a>
+      <a href="https://github.com/firecrawl/pdf-inspector/blob/main/docs/rust-api.md" target="_blank" rel="noopener">API oficial para Rust →</a>
+      <a href="https://github.com/firecrawl/pdf-inspector/blob/main/docs/debugging.md" target="_blank" rel="noopener">Depuración con RUST_LOG →</a>
+      <a href="https://github.com/firecrawl/pdf-inspector/blob/main/LICENSE" target="_blank" rel="noopener">Licencia MIT →</a>
+      <p class="print-note">El proyecto evoluciona rápidamente. Verifica el README, los paquetes y las notas de versión antes de implantarlo en producción.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid"><div><h2>Manual práctico de Aurelia</h2><p>Herramientas abiertas explicadas con claridad, criterio y una saludable dosis de locura friki.</p></div><div><p><a href="https://www.skool.com/frikis" target="_blank" rel="noopener"><b>Club de los Frikis →</b></a></p><p><a href="https://www.linkedin.com/in/mariajesuspuertaangulo" target="_blank" rel="noopener">LinkedIn de María Jesús →</a></p><p><a href="https://www.mariajesuspuertaangulo.com" target="_blank" rel="noopener">Web →</a></p></div></div>
+    <div class="wrap"><p class="small">Contenido educativo. Prueba siempre con tus propios documentos y revisa privacidad, seguridad y cumplimiento antes de tratar información real.</p></div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[data-copy]').forEach(function(button){button.addEventListener('click',function(){var id=button.getAttribute('data-copy');var value=document.getElementById(id).innerText;navigator.clipboard.writeText(value).then(function(){var old=button.textContent;button.textContent='COPIADO ✓';setTimeout(function(){button.textContent=old},1600)})})});
+  </script>
+</body>
+</html>
