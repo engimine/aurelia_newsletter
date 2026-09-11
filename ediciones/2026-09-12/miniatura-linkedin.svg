@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" role="img" aria-labelledby="t d">
+<title id="t">La IA propone una solución · IA al día con Aurelia</title><desc id="d">Miniatura horizontal de la edición del 12 de septiembre de 2026.</desc>
+<defs><clipPath id="photo"><rect x="720" y="0" width="480" height="627" rx="0"/></clipPath><linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#151018"/><stop offset="1" stop-color="#151018" stop-opacity="0"/></linearGradient></defs>
+<rect width="1200" height="627" fill="#151018"/><circle cx="990" cy="310" r="245" fill="#ff176f" opacity=".12"/><circle cx="1010" cy="300" r="170" fill="#ffe000" opacity=".08"/>
+<image href="https://engimine.github.io/aurelia_newsletter/ediciones/2026-09-05/miniatura-linkedin.jpg" x="470" y="0" width="1200" height="627" preserveAspectRatio="xMidYMid slice" clip-path="url(#photo)"/>
+<rect x="650" y="0" width="180" height="627" fill="url(#fade)"/>
+<rect x="52" y="46" width="250" height="54" rx="4" fill="#ff176f"/><text x="177" y="82" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="900" fill="#fff">NOTICIA TOP</text>
+<text x="52" y="190" font-family="Arial,Helvetica,sans-serif" font-size="76" font-weight="900" fill="#fff">LA IA PROPONE</text><text x="52" y="276" font-family="Arial,Helvetica,sans-serif" font-size="82" font-weight="900" fill="#ffe000">UNA SOLUCIÓN</text>
+<rect x="52" y="316" width="604" height="6" fill="#ff176f"/><text x="52" y="376" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="800" fill="#fff8e8">NAVIER–STOKES · EL PROBLEMA DEL MILLÓN</text>
+<text x="52" y="441" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#fff">OpenAI publica una propuesta con prueba formal en Lean.</text><text x="52" y="478" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#cfc5cf">Una propuesta científica, no una validación definitiva.</text>
+<rect x="52" y="530" width="346" height="58" rx="14" fill="none" stroke="#ff176f" stroke-width="3"/><text x="225" y="568" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="900" fill="#ff176f">AURELIA · IA AL DÍA</text>
+</svg>
