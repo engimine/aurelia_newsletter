@@ -1,0 +1,23 @@
+CIERRAS EL PORTÁTIL. LA IA SIGUE TRABAJANDO.
+
+Google ha presentado Gemini agent: un agente que puede mantener contexto y ejecutar trabajo en la nube durante horas o días, incluso cuando cierras el ordenador.
+
+El cambio es importante: delegamos un resultado y después revisamos qué ha hecho el sistema.
+
+Para una empresa, el reto será decidir:
+→ A qué información puede acceder.
+→ Qué acciones puede ejecutar.
+→ Cuándo debe pedir ayuda.
+→ Cómo comprobamos el resultado.
+
+Esta semana también trae Mistral Large 4 para tareas que incluyen planos e imágenes geoespaciales, GPT-6 en ChatGPT, nuevos equipos para IA local y avances de IA aplicada a la ciencia.
+
+Aurelia y sus amigas te lo cuentan con diez fuentes oficiales:
+https://engimine.github.io/aurelia_newsletter/ediciones/2026-10-12/
+
+Aprendemos a construir con IA en El Club de los Frikis:
+https://www.skool.com/frikis
+
+¿Qué tarea dejarías preparada para que un agente la continuase mientras tú desconectas?
+
+#InteligenciaArtificial #AgentesIA #Gemini #Ingeniería #Aurelia #ElClubDeLosFrikis
