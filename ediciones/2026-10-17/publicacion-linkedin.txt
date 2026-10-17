@@ -1,0 +1,28 @@
+🚨 DEL PLANO AL 3D. Y AHORA VIENE LA PREGUNTA IMPORTANTE.
+
+Google abrió Gemini 4 Argon el 13 de octubre.
+
+Entre sus demostraciones hay una que me toca de cerca como ingeniera: combinar LiDAR, GIS, planos CAD y archivos históricos para reconstruir Chaco Canyon en 3D.
+
+Imagina lo que significa conectar información que hoy vive repartida entre carpetas, planos y documentos.
+
+Pero una reconstrucción que impresiona en pantalla todavía necesita pasar por el criterio profesional.
+
+¿Tiene la escala correcta?
+¿Respeta las coordenadas?
+¿Qué precisión alcanza?
+¿Qué ha deducido y qué procede de los datos?
+
+Ahí empieza nuestro trabajo.
+
+Esta semana, Aurelia y sus amigas se han ido al estudio de digitalización. También traen presentaciones colaborativas, IA local y nuevos flujos de vídeo.
+
+Diez noticias, con fechas, fuentes y aplicaciones prácticas:
+https://engimine.github.io/aurelia_newsletter/ediciones/2026-10-17/
+
+🤓 Aprendemos a ponerlo en práctica en El Club de los Frikis:
+https://www.skool.com/frikis
+
+¿Qué plano o conjunto de documentos te gustaría explorar en 3D?
+
+#InteligenciaArtificial #Gemini #Ingeniería #AgentesIA #Aurelia #ElClubDeLosFrikis

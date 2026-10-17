@@ -1,0 +1,89 @@
+{
+  "edition": "2026-10-17",
+  "window": [
+    "2026-10-11",
+    "2026-10-17"
+  ],
+  "news": [
+    {
+      "date": "2026-10-13",
+      "org": "Google",
+      "title": "Gemini 4 Argon: datos dispersos, patrimonio en 3D",
+      "body": "Google abre Gemini 4 Argon a desarrolladores mediante API y a usuarios de los planes Pro y Ultra en Gemini y AI Mode. Una de sus demostraciones combina escaneos LiDAR, información GIS, planos CAD y archivos históricos para reconstruir Chaco Canyon en 3D.",
+      "take": "La oportunidad está en conectar documentos y geometría. Es una demostración de Google: un modelo visual convincente todavía exige comprobar escala, coordenadas y precisión antes de utilizarlo en un proyecto técnico.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/"
+    },
+    {
+      "date": "2026-10-16",
+      "org": "OpenAI",
+      "title": "ChatGPT estrena presentaciones que se editan en equipo",
+      "body": "Slides permite partir de una conversación, archivos o un esquema, modificar elementos de las diapositivas y colaborar en tiempo real dentro de Space. En la web ofrece exportación a PowerPoint, PDF y Google Slides. El despliegue llega a usuarios elegibles de Pro, Business y Enterprise con acceso a Space.",
+      "take": "El valor está en poder revisar y entregar un archivo editable. Comprueba las cifras, la jerarquía visual y la compatibilidad del archivo exportado.",
+      "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+    },
+    {
+      "date": "2026-10-15",
+      "org": "NVIDIA",
+      "title": "Nemotron lleva documentos visuales y agentes a la IA abierta",
+      "body": "NVIDIA presenta Nemotron 3.5 Super VL, de 120.000 millones de parámetros, orientado a documentos visuales y tareas de agentes. También publica Bolt 74B-A9B, con una variante de 24 GB optimizada para ejecución local. La compañía anuncia una variante más pequeña de 4 GB para el 23 de octubre.",
+      "take": "La variante de 4 GB todavía es un lanzamiento futuro. Para trabajar en local, revisa los requisitos de memoria y software de la versión concreta.",
+      "url": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/"
+    },
+    {
+      "date": "2026-10-12",
+      "org": "Microsoft",
+      "title": "Maia 300: la carrera de la IA también se juega en la infraestructura",
+      "body": "Microsoft anuncia la ampliación de Azure Maia hacia despliegues de varios gigavatios a partir de 2027. Mientras Maia 200 ya sirve cargas internas en producción, la siguiente generación, Maia 300, tiene prevista su entrada en producción en 2027.",
+      "take": "Es un plan de infraestructura, con plazos futuros. Para quienes construimos aplicaciones, capacidad, coste y disponibilidad del servicio serán tan importantes como el modelo elegido.",
+      "url": "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/"
+    },
+    {
+      "date": "2026-10-13",
+      "org": "Anthropic",
+      "title": "Anthropic rediseña el control de versiones para trabajar con agentes",
+      "body": "La compañía explica cómo migró su repositorio principal de Git a Scion, un sistema interno desarrollado en cinco meses. Según sus datos, pasó de unas 2.500 integraciones diarias en mayo a más de 30.000 en septiembre. El artículo, publicado el día 13, se actualizó el 15.",
+      "take": "Scion responde a una escala poco habitual. Anthropic sigue considerando Git adecuado para la mayoría de repositorios; no está anunciando un sustituto público para todo el mundo.",
+      "url": "https://www.anthropic.com/engineering/redesigning-source-control"
+    },
+    {
+      "date": "2026-10-15",
+      "org": "Anthropic / METR",
+      "title": "Evaluadores externos más cerca del desarrollo de modelos",
+      "body": "Anthropic detalla un acuerdo que da a seis empleados de METR un acceso amplio, comparable en aspectos concretos al de su personal, para evaluar modelos y procesos. Los investigadores pueden publicar sus conclusiones; el acuerdo permite determinadas supresiones previamente definidas, pero no un veto general de Anthropic.",
+      "take": "La evaluación independiente resulta más útil cuando puede examinar lo que ocurre antes del lanzamiento. El alcance y las condiciones de publicación también cuentan.",
+      "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators"
+    },
+    {
+      "date": "2026-10-13",
+      "org": "OpenAI / Higgsfield",
+      "title": "Higgsfield explica su salto a vídeos de más de diez minutos",
+      "body": "En un caso de cliente publicado por OpenAI, Higgsfield describe flujos de producción de vídeos instructivos de más de diez minutos apoyados en GPT-6 Astra y otras herramientas. El modelo coordina partes del proceso: no se trata de generar todo el metraje de una sola vez.",
+      "take": "La duración final depende del montaje y del flujo completo. El artículo no acredita que esa capacidad esté incluida en todos los planes de Higgsfield.",
+      "url": "https://openai.com/index/higgsfield-longer-videos-voice/"
+    },
+    {
+      "date": "2026-10-15",
+      "org": "Google",
+      "title": "La búsqueda con IA quiere hacer más visibles sus fuentes",
+      "body": "Google anuncia enlaces integrados más destacados en AI Mode y AI Overviews. Además, prueba secciones para páginas oficiales y nuevas formas de mostrar noticias y perfiles de creadores, con la intención de facilitar el salto desde la respuesta generada hasta la web original.",
+      "take": "Varias funciones son experimentos. Para contrastar una respuesta, abre la fuente y comprueba que respalde exactamente la afirmación que has leído.",
+      "url": "https://blog.google/products-and-platforms/products/search/updates-ai-mode-overviews-explore-web/"
+    },
+    {
+      "date": "2026-10-15",
+      "org": "Google",
+      "title": "Universal Cart reúne compras de varias tiendas en Gemini y Search",
+      "body": "Google inicia en Estados Unidos el despliegue de un carrito compartido entre comercios, conectado con Search y Gemini. Incluye seguimiento de precio y disponibilidad, y opciones de pago con Google Pay o en la tienda. Cada comercio sigue siendo el vendedor de sus productos.",
+      "take": "La disponibilidad anunciada es estadounidense. Conviene distinguir quién recomienda, quién procesa el pago y quién responde por la venta.",
+      "url": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/"
+    },
+    {
+      "date": "2026-10-15",
+      "org": "Google / ICRISAT",
+      "title": "IA agrícola: del banco de semillas al conocimiento útil",
+      "body": "Google presenta avances en India, entre ellos una colaboración con ICRISAT, HudsonAlpha y la Universidad de Washington para crear un atlas genético abierto del sorgo. El proyecto trabaja con una selección representativa de un banco de 44.000 variedades de 90 países. También anuncia una vista previa pública de sus modelos Agricultural Understanding.",
+      "take": "Un banco de semillas no equivale a un atlas ya completado. El valor práctico llegará al convertir esos datos en decisiones agronómicas contrastadas.",
+      "url": "https://blog.google/intl/en-in/company-news/from-lab-to-impact-advancing-ai-for-real-world-progress-in-india/"
+    }
+  ]
+}
