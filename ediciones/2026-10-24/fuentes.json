@@ -1,0 +1,89 @@
+{
+  "edition": "2026-10-24",
+  "window": [
+    "2026-10-18",
+    "2026-10-24"
+  ],
+  "news": [
+    {
+      "date": "2026-10-21",
+      "org": "OpenAI + Google Cloud",
+      "title": "OpenAI entra en la nube de Google",
+      "body": "OpenAI y Google Cloud llevarán modelos de frontera y flujos de Codex al Model Garden de Google Cloud. Las empresas podrán adquirirlos en Google Cloud Marketplace y utilizarlos con los controles de acceso y gobierno de datos de la plataforma. La disponibilidad general está prevista para las próximas semanas.",
+      "take": "Es una alianza de distribución, no una fusión. Microsoft continúa como socio principal de nube de OpenAI. La señal importante es que las empresas quieren elegir modelos distintos sin mover todo su entorno.",
+      "url": "https://openai.com/index/openai-models-google-cloud/"
+    },
+    {
+      "date": "2026-10-23",
+      "org": "OpenAI",
+      "title": "Los modelos de frontera entrenarán sin acceso a internet en vivo",
+      "body": "OpenAI describe un entorno de entrenamiento con contenido web indexado y almacenado, pero sin acceso arbitrario a internet. Tras detectar fallos y rutas de escape en pruebas internas, reforzó microVM, perímetros, vigilancia y paradas automáticas. Reanudó el entrenamiento interno el 1 de octubre.",
+      "take": "“Sin internet” no significa un aislamiento físico total: siguen existiendo conexiones para operar y supervisar. La defensa depende de varias capas y de probarlas continuamente.",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment/"
+    },
+    {
+      "date": "2026-10-22",
+      "org": "OpenAI",
+      "title": "Decisions API acelera las pequeñas decisiones de un agente",
+      "body": "OpenAI declara disponible de forma general una API basada en GPT-6 Luna para clasificar, puntuar o elegir entre opciones definidas. Admite texto, imágenes y JSON, hasta 400 preguntas por solicitud e integración con GPT-Live. OpenAI anuncia hasta diez veces más velocidad que Luna mediante Responses API.",
+      "take": "La cifra es del proveedor y depende del caso. Puede servir para enrutar incidencias, puntuar riesgo o decidir si un agente continúa, reintenta o pide revisión humana.",
+      "url": "https://openai.com/index/decisions-api/"
+    },
+    {
+      "date": "2026-10-21",
+      "org": "OpenAI + Scripps Research",
+      "title": "Miles de agentes exploran millones de células cerebrales",
+      "body": "OpenAI, PerturbAI y Scripps Research distribuyeron el análisis de un atlas CRISPR de cerebro de ratón entre miles de agentes con GPT-Rosalind. Según el equipo, interpretaron datos de millones de células en 32 minutos y construyeron un atlas de razonamiento que conecta genes, efectos celulares y literatura.",
+      "take": "Los agentes proponen conexiones y prioridades de investigación. Las hipótesis siguen necesitando validación experimental y revisión científica.",
+      "url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data/"
+    },
+    {
+      "date": "2026-10-22",
+      "org": "Anthropic",
+      "title": "Agent Skills pasa a una fundación neutral",
+      "body": "Anthropic dona el estándar Agent Skills a la Agentic AI Foundation, bajo Linux Foundation. Una skill reúne un archivo SKILL.md, instrucciones, scripts y recursos para enseñar un trabajo concreto a un agente. Anthropic afirma que más de 70 plataformas ya han integrado el estándar.",
+      "take": "Que una misma skill pueda viajar entre Claude, ChatGPT, Cursor o VS Code reduce dependencia de un proveedor. Antes de instalarla, revisa sus scripts, permisos y fuentes.",
+      "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+    },
+    {
+      "date": "2026-10-22",
+      "org": "Google DeepMind + WRI + IIASA",
+      "title": "Un mapa distingue cada tipo de bosque a diez metros",
+      "body": "Forest Typology 2020 clasifica cada parcela terrestre de 10 × 10 metros en seis tipos de bosque y uso del suelo. También publica una primera serie anual de cambios entre 2017 y 2025. Los datos están disponibles con licencia abierta en Google Earth Engine.",
+      "take": "Distinguir bosque natural, plantación y cultivo arbóreo aporta más que medir cobertura verde. Puede apoyar trazabilidad, EUDR y seguimiento ambiental, con comprobación sobre el terreno cuando una decisión lo exija.",
+      "url": "https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types/"
+    },
+    {
+      "date": "2026-10-21",
+      "org": "NVIDIA",
+      "title": "Los gemelos digitales entran en la fábrica europea",
+      "body": "NVIDIA reúne proyectos europeos donde agentes, geometría 3D y datos operativos se prueban en entornos virtuales. Siemens ensaya planes de producción en un gemelo digital; Audi simula producción de baterías y robots; Schneider Electric y AVEVA comparan configuraciones de energía, refrigeración y equipos.",
+      "take": "El gemelo aporta valor cuando está conectado con datos de ingeniería y operación. La escena 3D por sí sola no mantiene un modelo actualizado ni convierte una simulación en decisión segura.",
+      "url": "https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/"
+    },
+    {
+      "date": "2026-10-19",
+      "org": "NVIDIA + BSC",
+      "title": "Barcelona acelera startups de salud, agricultura y sostenibilidad",
+      "body": "NVIDIA presenta la cohorte del programa AI Factory Accelerator del Barcelona Supercomputing Center. Incluye proyectos para detectar fibrilación auricular oculta, clasificar subtipos de cáncer de mama, proteger cultivos con robots y desarrollar envases compostables, además de agentes para farmacia y seguridad empresarial.",
+      "take": "Es un programa de aceleración, no una validación clínica o comercial de todos los proyectos. Para María Jesús, confirma que salud, IA y sostenibilidad ya comparten infraestructura cercana.",
+      "url": "https://blogs.nvidia.com/blog/spain-startups-barcelona-supercomputing-center/"
+    },
+    {
+      "date": "2026-10-21",
+      "org": "NVIDIA + Google Cloud",
+      "title": "Vera Rubin prepara su llegada a Google Cloud",
+      "body": "Google Cloud anuncia instancias A5X basadas en sistemas NVIDIA Vera Rubin NVL72 para entrenamiento, inferencia y aprendizaje por refuerzo. La disponibilidad general está prevista para noviembre, con expansión posterior a Europa y planes de llegar hasta 960.000 GPU Rubin en varios emplazamientos.",
+      "take": "Es capacidad anunciada, todavía con despliegue futuro. El tamaño de la infraestructura muestra cuánto depende la nueva generación de agentes del cómputo, la red, la refrigeración y la energía.",
+      "url": "https://blogs.nvidia.com/blog/google-cloud-vera-rubin-infrastructure/"
+    },
+    {
+      "date": "2026-10-20",
+      "org": "Perplexity",
+      "title": "Perplexity Computer ya puede trabajar totalmente en local en Mac",
+      "body": "Perplexity anuncia un modo local para Apple Silicon que mantiene en el equipo el modelo, la planificación, el razonamiento y el tratamiento de archivos. Ofrece Qwen 3.6 y PPLX Pro en la aplicación para Mac, para planes Pro, Max y Enterprise; recomienda al menos 36 GB de memoria unificada.",
+      "take": "Local mejora privacidad y permite trabajar sin depender siempre de la nube, pero exige hardware y una suscripción compatibles. Revisa el modo activo antes de abrir documentos sensibles.",
+      "url": "https://www.perplexity.ai/en-GB/hub/blog/perplexity-computer-now-runs-fully-local-on-mac"
+    }
+  ]
+}

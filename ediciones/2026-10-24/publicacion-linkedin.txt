@@ -1,0 +1,34 @@
+🚨 OPENAI ENTRA EN CASA DE GOOGLE.
+
+Sí: dos de los mayores rivales de la inteligencia artificial acaban de abrir la misma puerta.
+
+OpenAI y Google Cloud llevarán los modelos de frontera y los flujos de Codex al Model Garden de Google.
+
+Las empresas podrán adquirirlos desde Google Cloud Marketplace y trabajar con ellos dentro de la infraestructura donde ya guardan sus datos.
+
+Microsoft sigue siendo el socio principal de nube de OpenAI. No hay fusión.
+
+Pero el mensaje es enorme:
+
+La batalla ya no consiste únicamente en tener “el mejor modelo”.
+
+Consiste en dejar que cada empresa elija el modelo adecuado sin reconstruir todo su sistema.
+
+Eso cambia cómo debemos diseñar nuestros agentes:
+
+→ datos bajo control
+→ herramientas separadas del modelo
+→ resultados medibles
+→ libertad para cambiar de proveedor
+
+Esta semana Aurelia también trae modelos entrenados sin internet en vivo, miles de agentes analizando células cerebrales, gemelos digitales en fábricas europeas y un mapa mundial de bosques a diez metros.
+
+👇 Las 10 noticias con fechas y fuentes oficiales:
+https://engimine.github.io/aurelia_newsletter/ediciones/2026-10-24/
+
+🤓 El Club de los Frikis:
+https://www.skool.com/frikis
+
+¿Confiarías toda tu IA a un solo proveedor?
+
+#InteligenciaArtificial #OpenAI #GoogleCloud #Codex #AgentesIA #Aurelia #ElClubDeLosFrikis
