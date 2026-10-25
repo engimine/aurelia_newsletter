@@ -1,0 +1,429 @@
+{
+ "direccion": "x",
+ "Lj": [
+  3.3
+ ],
+ "Lb": [
+  4.4
+ ],
+ "H": 2.45,
+ "cargas": {
+  "g": 0.9,
+  "g_post": 0.75,
+  "q": 2.0,
+  "Q": 2.0,
+  "hb": 0.8,
+  "psi": [
+   0.7,
+   0.5,
+   0.3
+  ],
+  "perm": [
+   {
+    "nombre": "Tablero estructural OSB/contrachapado 22 mm",
+    "valor": 0.15,
+    "posterior": false
+   },
+   {
+    "nombre": "Pavimento ligero",
+    "valor": 0.5,
+    "posterior": true
+   },
+   {
+    "nombre": "Falso techo de placa de yeso",
+    "valor": 0.15,
+    "posterior": true
+   },
+   {
+    "nombre": "Instalaciones",
+    "valor": 0.1,
+    "posterior": true
+   }
+  ],
+  "uso_desc": "Viviendas y zonas de habitaciones en hospitales y hoteles"
+ },
+ "vigueta": {
+  "seccion": "45x195 C24",
+  "b": 45,
+  "h": 195,
+  "mat": "C24",
+  "pp": 0.0362,
+  "R_G": 0.6537,
+  "R_Q": 1.32,
+  "Md": 2.3615,
+  "Vd": 2.8624,
+  "flechas": {
+   "activa": 7.4804,
+   "confort": 4.0388,
+   "apariencia": 5.1387
+  }
+ },
+ "R_vigueta": 2.8624,
+ "viga": {
+  "seccion": "IPE 200",
+  "pp": 0.2181,
+  "R_G": 4.7349,
+  "R_Q": 7.26,
+  "Md": 19.0104,
+  "Vd": 17.2822,
+  "flechas": {
+   "activa": 5.4367,
+   "confort": 3.9539,
+   "apariencia": 3.7649
+  }
+ },
+ "trib": [
+  1.65,
+  1.65
+ ],
+ "zuncho": {
+  "seccion": "IPE 200",
+  "pp": 0.2181,
+  "R_G": 1.1817,
+  "R_Q": 0.66,
+  "Md": 2.1329,
+  "Vd": 2.5853,
+  "flechas": {
+   "activa": 0.2085,
+   "confort": 0.1516,
+   "apariencia": 0.317
+  }
+ },
+ "pilar": {
+  "seccion": "SHS 80x4",
+  "Nd": 20.1667,
+  "NG": 6.1383,
+  "NQ": 7.92,
+  "Md": 2.4195,
+  "Lk": 1.715
+ },
+ "Hd": 5.28,
+ "anclajes_muro": {
+  "n": 8,
+  "sep": 0.6,
+  "Vd": 0.66,
+  "L": 4.4
+ },
+ "placa": {
+  "a": 200,
+  "t": 10,
+  "aw": 4,
+  "pernos": "4 M16 barra roscada 8.8 con anclaje químico (ETA), L,emb ≥ 125 mm"
+ },
+ "zapata": {
+  "B": 0.8,
+  "h": 0.4,
+  "prof": 0.6,
+  "n": 4,
+  "phi": 12,
+  "sep": 0.2333,
+  "rigida": true,
+  "smax": 35.9661,
+  "smed": 35.9661,
+  "Nd": 20.1667,
+  "rec": 0.05,
+  "fck": 25.0
+ },
+ "union": {
+  "Rd": 17.2822,
+  "n_tornillos": 2,
+  "clase": "8.8"
+ },
+ "sismo_txt": "ab = 0.04g < 0,08g, construcción de importancia normal con pórticos bien arriostrados → exenta de la NCSE-02 (art. 1.2.3).",
+ "fuego": "R 30",
+ "ok": true,
+ "checks": [
+  {
+   "elemento": "Vigueta",
+   "comprobacion": "ELU flexión σm,d ≤ fm,d",
+   "demanda": 8.2805,
+   "capacidad": 14.7692,
+   "unidad": "MPa",
+   "ratio": 0.5607,
+   "ref": "DB-SE-M 6.1.6",
+   "cumple": true
+  },
+  {
+   "elemento": "Vigueta",
+   "comprobacion": "ELU cortante τd ≤ fv,d",
+   "demanda": 0.4893,
+   "capacidad": 1.5385,
+   "unidad": "MPa",
+   "ratio": 0.318,
+   "ref": "DB-SE-M 6.1.8",
+   "cumple": true
+  },
+  {
+   "elemento": "Vigueta",
+   "comprobacion": "ELU carga concentrada 2 kN en centro de vano",
+   "demanda": 11.2312,
+   "capacidad": 16.6154,
+   "unidad": "MPa",
+   "ratio": 0.676,
+   "ref": "DB-SE-AE 3.1.1(2), DB-SE-M 6.1.6",
+   "cumple": true
+  },
+  {
+   "elemento": "Vigueta",
+   "comprobacion": "ELS integridad (flecha activa ≤ L/400)",
+   "demanda": 7.4804,
+   "capacidad": 8.25,
+   "unidad": "mm",
+   "ratio": 0.9067,
+   "ref": "DB-SE 4.3.3.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Vigueta",
+   "comprobacion": "ELS confort (δQ ≤ L/350)",
+   "demanda": 4.0388,
+   "capacidad": 9.4286,
+   "unidad": "mm",
+   "ratio": 0.4284,
+   "ref": "DB-SE 4.3.3.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Vigueta",
+   "comprobacion": "ELS apariencia (casi perm. ≤ L/300)",
+   "demanda": 5.1387,
+   "capacidad": 11.0,
+   "unidad": "mm",
+   "ratio": 0.4672,
+   "ref": "DB-SE 4.3.3.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Viga principal",
+   "comprobacion": "ELU flexión Md ≤ χLT·Mpl,Rd",
+   "demanda": 19.0104,
+   "capacidad": 57.6147,
+   "unidad": "kN·m",
+   "ratio": 0.33,
+   "ref": "DB-SE-A 6.2.6 / 6.3.3",
+   "cumple": true
+  },
+  {
+   "elemento": "Viga principal",
+   "comprobacion": "ELU cortante Vd ≤ Vpl,Rd",
+   "demanda": 17.2822,
+   "capacidad": 209.253,
+   "unidad": "kN",
+   "ratio": 0.0826,
+   "ref": "DB-SE-A 6.2.4",
+   "cumple": true
+  },
+  {
+   "elemento": "Viga principal",
+   "comprobacion": "ELS integridad (flecha activa ≤ L/400)",
+   "demanda": 5.4367,
+   "capacidad": 11.0,
+   "unidad": "mm",
+   "ratio": 0.4942,
+   "ref": "DB-SE 4.3.3.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Viga principal",
+   "comprobacion": "ELS confort (δQ ≤ L/350)",
+   "demanda": 3.9539,
+   "capacidad": 12.5714,
+   "unidad": "mm",
+   "ratio": 0.3145,
+   "ref": "DB-SE 4.3.3.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Viga principal",
+   "comprobacion": "ELS apariencia (casi perm. ≤ L/300)",
+   "demanda": 3.7649,
+   "capacidad": 14.6667,
+   "unidad": "mm",
+   "ratio": 0.2567,
+   "ref": "DB-SE 4.3.3.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Zuncho",
+   "comprobacion": "ELU flexión Md ≤ χLT·Mpl,Rd",
+   "demanda": 2.1329,
+   "capacidad": 57.6147,
+   "unidad": "kN·m",
+   "ratio": 0.037,
+   "ref": "DB-SE-A 6.2.6 / 6.3.3",
+   "cumple": true
+  },
+  {
+   "elemento": "Zuncho",
+   "comprobacion": "ELU cortante Vd ≤ Vpl,Rd",
+   "demanda": 2.5853,
+   "capacidad": 209.253,
+   "unidad": "kN",
+   "ratio": 0.0124,
+   "ref": "DB-SE-A 6.2.4",
+   "cumple": true
+  },
+  {
+   "elemento": "Zuncho",
+   "comprobacion": "ELS integridad (flecha activa ≤ L/400)",
+   "demanda": 0.2085,
+   "capacidad": 8.25,
+   "unidad": "mm",
+   "ratio": 0.0253,
+   "ref": "DB-SE 4.3.3.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Zuncho",
+   "comprobacion": "ELS confort (δQ ≤ L/350)",
+   "demanda": 0.1516,
+   "capacidad": 9.4286,
+   "unidad": "mm",
+   "ratio": 0.0161,
+   "ref": "DB-SE 4.3.3.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Zuncho",
+   "comprobacion": "ELS apariencia (casi perm. ≤ L/300)",
+   "demanda": 0.317,
+   "capacidad": 11.0,
+   "unidad": "mm",
+   "ratio": 0.0288,
+   "ref": "DB-SE 4.3.3.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Pilar",
+   "comprobacion": "ELU pandeo por compresión Nd ≤ Nb,Rd",
+   "demanda": 20.1667,
+   "capacidad": 233.8153,
+   "unidad": "kN",
+   "ratio": 0.0863,
+   "ref": "DB-SE-A 6.3.2",
+   "cumple": true
+  },
+  {
+   "elemento": "Pilar",
+   "comprobacion": "ELU interacción N + M (cm = 0,9)",
+   "demanda": 0.346,
+   "capacidad": 1.0,
+   "unidad": "-",
+   "ratio": 0.346,
+   "ref": "DB-SE-A 6.3.4.2 (simplificada)",
+   "cumple": true
+  },
+  {
+   "elemento": "Placa base",
+   "comprobacion": "ELU presión bajo placa σ ≤ fjd",
+   "demanda": 0.5042,
+   "capacidad": 16.6667,
+   "unidad": "MPa",
+   "ratio": 0.0303,
+   "ref": "DB-SE-A 8.8.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Placa base",
+   "comprobacion": "ELU flexión de placa t,req ≤ t = 10 mm",
+   "demanda": 4.5596,
+   "capacidad": 10.0,
+   "unidad": "mm",
+   "ratio": 0.456,
+   "ref": "DB-SE-A 8.8.1",
+   "cumple": true
+  },
+  {
+   "elemento": "Placa base",
+   "comprobacion": "ELU soldadura pilar-placa en ángulo a = 4 mm perimetral",
+   "demanda": 20.1667,
+   "capacidad": 285.1703,
+   "unidad": "kN",
+   "ratio": 0.0707,
+   "ref": "DB-SE-A 8.6.2",
+   "cumple": true
+  },
+  {
+   "elemento": "Zapata",
+   "comprobacion": "Tensión media σmed ≤ σadm",
+   "demanda": 35.9661,
+   "capacidad": 150.0,
+   "unidad": "kPa",
+   "ratio": 0.2398,
+   "ref": "DB-SE-C 4.3",
+   "cumple": true
+  },
+  {
+   "elemento": "Zapata",
+   "comprobacion": "Tensión de borde σmax ≤ 1,25·σadm",
+   "demanda": 35.9661,
+   "capacidad": 187.5,
+   "unidad": "kPa",
+   "ratio": 0.1918,
+   "ref": "DB-SE-C 4.3",
+   "cumple": true
+  },
+  {
+   "elemento": "Zapata",
+   "comprobacion": "Armadura inferior por dirección: 4Ø12 c/23 cm",
+   "demanda": 288.0,
+   "capacidad": 452.4,
+   "unidad": "mm²",
+   "ratio": 0.6366,
+   "ref": "Código Estructural (bielas y tirantes, cuantía mínima)",
+   "cumple": true
+  },
+  {
+   "elemento": "Zapata",
+   "comprobacion": "Compresión localizada bajo placa",
+   "demanda": 20.1667,
+   "capacidad": 2000.0,
+   "unidad": "kN",
+   "ratio": 0.0101,
+   "ref": "Código Estructural art. 61",
+   "cumple": true
+  },
+  {
+   "elemento": "Unión viga-pilar",
+   "comprobacion": "2 tornillos M16 8.8 a cortante (1 plano)",
+   "demanda": 17.2822,
+   "capacidad": 120.576,
+   "unidad": "kN",
+   "ratio": 0.1433,
+   "ref": "DB-SE-A 8.5.2.2",
+   "cumple": true
+  },
+  {
+   "elemento": "Unión viga-pilar",
+   "comprobacion": "Aplastamiento en chapa de 8 mm",
+   "demanda": 17.2822,
+   "capacidad": 209.92,
+   "unidad": "kN",
+   "ratio": 0.0823,
+   "ref": "DB-SE-A 8.5.2.2",
+   "cumple": true
+  }
+ ],
+ "pilares_N": {
+  "0,0": [
+   5.9166,
+   7.92,
+   17.2822
+  ],
+  "0,1": [
+   5.9166,
+   7.92,
+   17.2822
+  ],
+  "1,0": [
+   5.9166,
+   7.92,
+   17.2822
+  ],
+  "1,1": [
+   5.9166,
+   7.92,
+   17.2822
+  ]
+ }
+}
