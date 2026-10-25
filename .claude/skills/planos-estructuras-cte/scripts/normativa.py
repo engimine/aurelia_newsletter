@@ -5,6 +5,7 @@ Los valores se toman de las tablas del CTE vigente. Cualquier dato nuevo que se 
 debe llevar su referencia (documento + tabla/apartado) en el comentario.
 """
 import math
+from functools import lru_cache
 import numpy as np
 
 # ---------------------------------------------------------------- DB-SE-AE
@@ -206,6 +207,7 @@ def perfil_SHS(lado, t):
                 Av=A / 2, i=math.sqrt(Iy / A), peso=A * 7850e-6 * 9.81e-3)
 
 
+@lru_cache(maxsize=None)
 def perfil(nombre):
     """'IPE 200', 'HEB 160', 'SHS 100x5'."""
     serie, dim = nombre.split()
@@ -220,6 +222,6 @@ def catalogo(serie):
         return [f"IPE {n}" for n in IPE]
     if serie == "HEB":
         return [f"HEB {n}" for n in HEB]
-    if serie == "SHS":
-        return [f"SHS {l}x{t}" for l, t in SHS]
+    if serie == "SHS":  # ordenados por peso (área) para que el primero que cumple sea el más ligero
+        return sorted((f"SHS {l}x{t}" for l, t in SHS), key=lambda p: perfil(p)["A"])
     raise ValueError(serie)

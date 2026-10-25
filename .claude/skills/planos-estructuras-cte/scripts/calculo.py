@@ -11,6 +11,7 @@ Unidades: kN, m, MPa. Las secciones se manejan en mm.
 """
 import math
 import normativa as N
+import geotecnia as G
 
 
 class Memoria:
@@ -241,36 +242,62 @@ def placa_base(M, elem, pil, Nd, acero, fck, cfg):
 
 
 # ====================================================================== zapata
+def _qadm(M, cfg, B, D, Nk, Mk, escribir):
+    g = cfg.get("geotecnia")
+    if g and g.get("fuente") == "geologia":
+        return G.presion_admisible_geologia(M, cfg, B, D, Nk, Mk, escribir=escribir)
+    return G.presion_admisible(M, cfg, B, D, Nk, Mk, escribir=escribir)
+
+
 def zapata(M, elem, NG, NQ, Mk, a0, cfg):
     c = cfg["cimentacion"]
-    sadm = c["tension_admisible"]  # kPa
+    g = cfg.get("geotecnia", {})
     h = max(c.get("canto", 0.40), N.CANTO_MIN_ZAPATA)
     prof = c.get("profundidad", h + 0.20)
+    er = g.get("espesor_relleno", 0.0)
+    if er and prof < er + 0.20:
+        prof = er + 0.20   # apoyo empotrado al menos 20 cm en el terreno natural
+    if g.get("profundidad_minima"):
+        prof = max(prof, g["profundidad_minima"])
     fck = N.HORMIGONES[cfg["materiales"]["hormigon"]]
     fyk = N.ARMADURAS[cfg["materiales"]["armadura"]]
     fyd = min(fyk / N.GAMMA_S, 400.0)  # tirante en bielas y tirantes ≤ 400 MPa
     rec = c.get("recubrimiento", 0.05)
     Nk = NG + NQ
+    peso_f = lambda B: B * B * (h * 25 + (prof - h) * 20)
     B = c.get("lado")
     if not B:
-        B = c.get("lado_minimo", 0.80)
+        B = c.get("lado_minimo", 0.60)
         while True:
-            peso = B * B * (h * 25 + (prof - h) * 20)
-            e = Mk / (Nk + peso)
-            smax = (Nk + peso) / B ** 2 * (1 + 6 * e / B)
-            if (Nk + peso) / B ** 2 <= sadm and smax <= 1.25 * sadm and e <= B / 6:
+            Ntot = Nk + peso_f(B)
+            e = Mk / Ntot
+            sadm, _ = _qadm(M, cfg, B, prof, Ntot, Mk, False)
+            smax = Ntot / B ** 2 * (1 + 6 * e / B)
+            if Ntot / B ** 2 <= sadm and smax <= 1.25 * sadm and e <= B / 6:
                 break
             B = round(B + 0.05, 2)
-    peso = B * B * (h * 25 + (prof - h) * 20)
+            if B > 6:
+                raise ValueError("Zapata > 6 m: la cimentación directa no es adecuada para este terreno.")
+    peso = peso_f(B)
     Ntot = Nk + peso
     e = Mk / Ntot
     smed = Ntot / B ** 2
     smax = smed * (1 + 6 * e / B)
+    M.h("7.1 Terreno de cimentación", 3)
+    sadm, geo = _qadm(M, cfg, B, prof, Ntot, Mk, True)
+    M.h("7.2 Zapata", 3)
     M.p(f"Zapata cuadrada {B:.2f}×{B:.2f}×{h:.2f} m, cota de apoyo −{prof:.2f} m; HA: fck = {fck:.0f} MPa; "
-        f"armadura fyk = {fyk:.0f} MPa; σadm = {sadm:.0f} kPa (DB-SE-C, a confirmar por estudio geotécnico).")
+        f"armadura fyk = {fyk:.0f} MPa; σadm = {sadm:.0f} kPa.")
     M.p(f"Nk = {Nk:.1f} kN; peso zapata + tierras = {peso:.1f} kN; Mk = {Mk:.2f} kN·m → e = {e*100:.1f} cm.")
     M.check(elem, "Tensión media σmed ≤ σadm", smed, sadm, "kPa", "DB-SE-C 4.3")
     M.check(elem, "Tensión de borde σmax ≤ 1,25·σadm", smax, 1.25 * sadm, "kPa", "DB-SE-C 4.3")
+    if geo.get("s_unit"):
+        s_ = geo["s_unit"] * max(smed - geo["q0"], 0)
+        s_adm = g.get("asiento_admisible", 25.0)
+        M.check(elem, "ELS asiento total s ≤ s,adm", s_, s_adm, "mm", "DB-SE-C 4.2.2.3 / anejo F.2")
+        Lmin = min(min(cfg["geometria"]["luces_x"]), min(cfg["geometria"]["luces_y"]))
+        dist = 0.5 * s_ / 1000 / Lmin   # asiento diferencial estimado = 50 % del total entre zapatas iguales
+        M.check(elem, "ELS distorsión angular β ≤ 1/500", dist, 1 / 500, "-", "DB-SE-C tabla 2.2")
     v = (B - a0) / 2
     rigida = v <= 2 * h
     d = h - rec - 0.008
@@ -306,7 +333,7 @@ def zapata(M, elem, NG, NQ, Mk, a0, cfg):
     M.p(f"As,min geométrica = {RHO_TXT()} · B · h = {As_min:.0f} mm²; Ø ≥ 12 mm y separación ≤ 30 cm.")
     # compresión localizada bajo la placa base
     return dict(B=B, h=h, prof=prof, n=n, phi=phi, sep=sep, rigida=rigida, smax=smax, smed=smed, Nd=Nd,
-                rec=rec, fck=fck)
+                rec=rec, fck=fck, sadm=sadm, geo=geo)
 
 
 def RHO_TXT():
@@ -516,6 +543,40 @@ def calcular(cfg):
     # ------------------------------------------------ zapata
     M.h("7. Cimentación (DB-SE-C, Código Estructural)")
     Mk = (Md_h / 1.5) if est["tipo"] == "pilares_empotrados" else 0.0
+    g = cfg.get("geotecnia", {})
+    fuente = g.get("fuente", "orientativo")
+    M.h("7.0 Información geotécnica", 3)
+    if fuente == "estudio":
+        M.p(f"Fuente: estudio geotécnico — {g.get('referencia', 'sin referencia')}.")
+    elif fuente == "geologia":
+        M.p(f"Fuente: **sin estudio geotécnico**; terreno estimado a partir de la geología del emplazamiento "
+            f"({g.get('referencia', 'mapa geológico')}). Valores de PREDIMENSIONADO: el estudio geotécnico es "
+            f"preceptivo (DB-SE-C 3.1) y debe confirmarlos antes de la ejecución.")
+        if not g.get("litologia"):
+            import geologia as GL
+            if not g.get("descripcion_geologica") and g.get("coordenadas"):
+                try:
+                    g["descripcion_geologica"], _ = GL.consultar_magna(*g["coordenadas"])
+                except Exception as ex:
+                    raise ValueError(f"Sin litología y sin acceso al IGME ({ex}). Indicar 'litologia' o "
+                                     f"'descripcion_geologica' copiada del visor https://info.igme.es/visor/")
+            g["litologia"], _ = GL.clasificar(g["descripcion_geologica"])
+            M.p(f"Descripción geológica: «{g['descripcion_geologica'][:300]}» → litología geotécnica "
+                f"«{g['litologia']}».")
+        lit = G.GEOLOGIA[g["litologia"]]
+        for a_ in lit["avisos"]:
+            M.p(f"> ⚠ {a_}")
+        if lit.get("sulfatos_suelo") and "sulfatos_suelo" not in g:
+            g["sulfatos_suelo"] = lit["sulfatos_suelo"]
+        g.setdefault("grupo_terreno_geologia", lit["grupo"])
+    else:
+        M.p("Fuente: valor de tensión admisible adoptado sin estudio ni geología. PREDIMENSIONADO.")
+    rec_geo = G.analizar_reconocimiento(M, cfg, 1.0, cfg["cimentacion"].get("profundidad", 0.6))
+    dur = G.durabilidad(M, cfg)
+    if N.HORMIGONES[mat["hormigon"]] < N.HORMIGONES[dur["hormigon_min"]]:
+        M.p(f"Se eleva el hormigón de cimentación de {mat['hormigon']} a {dur['hormigon_min']} por durabilidad.")
+        mat["hormigon"] = dur["hormigon_min"]
+    res["geotecnia"] = dict(fuente=fuente, reconocimiento=rec_geo, durabilidad=dur)
     zp = zapata(M, "Zapata", pil["NG"], NQ, Mk, pb["a"] / 1000, cfg)
     res["zapata"] = zp
     Ac0 = (pb["a"] / 1000) ** 2

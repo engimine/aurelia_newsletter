@@ -9,22 +9,32 @@
     "estudio": "ARISTOSIA PROJECTS, S.L.",
     "logo": "recursos/logo_aristosia.png",
     "autores": [
-      {"nombre": "PEDRO J. VÉLEZ SÁNCHEZ", "titulo": "Ing. Téc. de Minas · Col. 616"},
-      {"nombre": "MARÍA JESÚS PUERTA ANGULO", "titulo": "Ingeniera de Minas · Col. NE 347-C"}
+      {
+        "nombre": "PEDRO J. VÉLEZ SÁNCHEZ",
+        "titulo": "Ing. Téc. de Minas · Col. 616"
+      },
+      {
+        "nombre": "MARÍA JESÚS PUERTA ANGULO",
+        "titulo": "Ingeniera de Minas · Col. NE 347-C"
+      }
     ],
     "formato": "A3"
   },
   "uso": "A1",
   "geometria": {
-    "luces_x": [3.30],
-    "luces_y": [4.40],
+    "luces_x": [
+      3.3
+    ],
+    "luces_y": [
+      4.4
+    ],
     "altura_pilar": 2.45,
     "direccion_viguetas": "x"
   },
   "cargas": {
     "tabiqueria": 0.0,
     "barandilla": true,
-    "peso_barandilla": 0.30
+    "peso_barandilla": 0.3
   },
   "tabiqueria_tipo": "ordinaria",
   "clase_servicio": 1,
@@ -34,12 +44,46 @@
     "hormigon": "HA-25",
     "armadura": "B500S"
   },
-  "forjado": {"material": "C24", "separacion": 0.40, "tablero": "Tablero OSB/3 22 mm machihembrado, encolado y atornillado"},
-  "vigas": {"serie": "IPE"},
+  "forjado": {
+    "material": "C24",
+    "separacion": 0.4,
+    "tablero": "Tablero OSB/3 22 mm machihembrado, encolado y atornillado"
+  },
+  "vigas": {
+    "serie": "IPE"
+  },
   "vigas_arriostradas": true,
-  "pilares": {"serie": "SHS", "base": "empotrada"},
-  "estabilidad": {"tipo": "muro", "separacion_anclajes": 0.60, "longitud_muro": 4.40},
-  "cimentacion": {"tension_admisible": 150, "canto": 0.40, "profundidad": 0.60, "recubrimiento": 0.05},
-  "sismo": {"ab": 0.04, "importancia": "normal"},
-  "resistencia_fuego": "R 30"
+  "pilares": {
+    "serie": "SHS",
+    "base": "empotrada"
+  },
+  "estabilidad": {
+    "tipo": "muro",
+    "separacion_anclajes": 0.6,
+    "longitud_muro": 4.4
+  },
+  "cimentacion": {
+    "tension_admisible": 150,
+    "canto": 0.4,
+    "profundidad": 0.6,
+    "recubrimiento": 0.05
+  },
+  "sismo": {
+    "ab": 0.04,
+    "importancia": "normal"
+  },
+  "resistencia_fuego": "R 30",
+  "geotecnia": {
+    "fuente": "geologia",
+    "referencia": "Mapa Geológico MAGNA 1:50.000, IGME (visor info.igme.es)",
+    "coordenadas": [
+      40.597,
+      0.448
+    ],
+    "descripcion_geologica": "Glacis. Gravas, arenas y limos con costras calcáreas (Cuaternario)",
+    "espesor_relleno": 0.3,
+    "nivel_freatico": null,
+    "asiento_admisible": 25
+  },
+  "plantas": 1
 }

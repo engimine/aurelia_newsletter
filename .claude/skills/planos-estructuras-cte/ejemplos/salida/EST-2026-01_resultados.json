@@ -43,33 +43,33 @@
   "uso_desc": "Viviendas y zonas de habitaciones en hospitales y hoteles"
  },
  "vigueta": {
-  "seccion": "45x195 C24",
-  "b": 45,
+  "seccion": "70x195 C24",
+  "b": 70,
   "h": 195,
   "mat": "C24",
-  "pp": 0.0362,
-  "R_G": 0.6537,
-  "R_Q": 1.32,
-  "Md": 2.3615,
-  "Vd": 2.8624,
+  "pp": 0.0562,
+  "R_G": 0.9838,
+  "R_Q": 1.98,
+  "Md": 3.546,
+  "Vd": 4.2981,
   "flechas": {
-   "activa": 7.4804,
-   "confort": 4.0388,
-   "apariencia": 5.1387
+   "activa": 7.2172,
+   "confort": 3.8946,
+   "apariencia": 4.9656
   }
  },
- "R_vigueta": 2.8624,
+ "R_vigueta": 4.2981,
  "viga": {
   "seccion": "IPE 200",
   "pp": 0.2181,
-  "R_G": 4.7349,
+  "R_G": 4.7471,
   "R_Q": 7.26,
-  "Md": 19.0104,
-  "Vd": 17.2822,
+  "Md": 19.0284,
+  "Vd": 17.2986,
   "flechas": {
    "activa": 5.4367,
    "confort": 3.9539,
-   "apariencia": 3.7649
+   "apariencia": 3.7715
   }
  },
  "trib": [
@@ -79,22 +79,22 @@
  "zuncho": {
   "seccion": "IPE 200",
   "pp": 0.2181,
-  "R_G": 1.1817,
-  "R_Q": 0.66,
-  "Md": 2.1329,
-  "Vd": 2.5853,
+  "R_G": 1.3468,
+  "R_Q": 0.99,
+  "Md": 2.7251,
+  "Vd": 3.3031,
   "flechas": {
-   "activa": 0.2085,
-   "confort": 0.1516,
-   "apariencia": 0.317
+   "activa": 0.3128,
+   "confort": 0.2275,
+   "apariencia": 0.3777
   }
  },
  "pilar": {
   "seccion": "SHS 80x4",
-  "Nd": 20.1667,
-  "NG": 6.1383,
-  "NQ": 7.92,
-  "Md": 2.4195,
+  "Nd": 20.901,
+  "NG": 6.3155,
+  "NQ": 8.25,
+  "Md": 2.4218,
   "Lk": 1.715
  },
  "Hd": 5.28,
@@ -110,22 +110,44 @@
   "aw": 4,
   "pernos": "4 M16 barra roscada 8.8 con anclaje químico (ETA), L,emb ≥ 125 mm"
  },
+ "geotecnia": {
+  "fuente": "geologia",
+  "reconocimiento": {
+   "tipo": "C-0",
+   "grupo": "T-2",
+   "motivo": "estimado según la litología",
+   "avisos": [
+    "No se aporta el detalle del reconocimiento (puntos, sondeos, profundidad)."
+   ],
+   "dmax": 30,
+   "P": 18,
+   "nsond": 2
+  },
+  "durabilidad": {
+   "clase": "IIa",
+   "hormigon_min": "HA-25",
+   "quimica": null,
+   "ac": 0.6,
+   "cemento": 275
+  }
+ },
  "zapata": {
-  "B": 0.8,
-  "h": 0.4,
+  "B": 0.6,
+  "h": 0.3,
   "prof": 0.6,
-  "n": 4,
+  "n": 3,
   "phi": 12,
-  "sep": 0.2333,
+  "sep": 0.25,
   "rigida": true,
-  "smax": 35.9661,
-  "smed": 35.9661,
-  "Nd": 20.1667,
+  "smax": 53.9598,
+  "smed": 53.9598,
+  "Nd": 20.901,
   "rec": 0.05,
-  "fck": 25.0
+  "fck": 25.0,
+  "sadm": 200
  },
  "union": {
-  "Rd": 17.2822,
+  "Rd": 17.2986,
   "n_tornillos": 2,
   "clase": "8.8"
  },
@@ -136,80 +158,80 @@
   {
    "elemento": "Vigueta",
    "comprobacion": "ELU flexión σm,d ≤ fm,d",
-   "demanda": 8.2805,
+   "demanda": 7.9931,
    "capacidad": 14.7692,
    "unidad": "MPa",
-   "ratio": 0.5607,
+   "ratio": 0.5412,
    "ref": "DB-SE-M 6.1.6",
    "cumple": true
   },
   {
    "elemento": "Vigueta",
    "comprobacion": "ELU cortante τd ≤ fv,d",
-   "demanda": 0.4893,
+   "demanda": 0.4723,
    "capacidad": 1.5385,
    "unidad": "MPa",
-   "ratio": 0.318,
+   "ratio": 0.307,
    "ref": "DB-SE-M 6.1.8",
    "cumple": true
   },
   {
    "elemento": "Vigueta",
    "comprobacion": "ELU carga concentrada 2 kN en centro de vano",
-   "demanda": 11.2312,
+   "demanda": 8.0489,
    "capacidad": 16.6154,
    "unidad": "MPa",
-   "ratio": 0.676,
+   "ratio": 0.4844,
    "ref": "DB-SE-AE 3.1.1(2), DB-SE-M 6.1.6",
    "cumple": true
   },
   {
    "elemento": "Vigueta",
    "comprobacion": "ELS integridad (flecha activa ≤ L/400)",
-   "demanda": 7.4804,
+   "demanda": 7.2172,
    "capacidad": 8.25,
    "unidad": "mm",
-   "ratio": 0.9067,
+   "ratio": 0.8748,
    "ref": "DB-SE 4.3.3.1",
    "cumple": true
   },
   {
    "elemento": "Vigueta",
    "comprobacion": "ELS confort (δQ ≤ L/350)",
-   "demanda": 4.0388,
+   "demanda": 3.8946,
    "capacidad": 9.4286,
    "unidad": "mm",
-   "ratio": 0.4284,
+   "ratio": 0.4131,
    "ref": "DB-SE 4.3.3.1",
    "cumple": true
   },
   {
    "elemento": "Vigueta",
    "comprobacion": "ELS apariencia (casi perm. ≤ L/300)",
-   "demanda": 5.1387,
+   "demanda": 4.9656,
    "capacidad": 11.0,
    "unidad": "mm",
-   "ratio": 0.4672,
+   "ratio": 0.4514,
    "ref": "DB-SE 4.3.3.1",
    "cumple": true
   },
   {
    "elemento": "Viga principal",
    "comprobacion": "ELU flexión Md ≤ χLT·Mpl,Rd",
-   "demanda": 19.0104,
+   "demanda": 19.0284,
    "capacidad": 57.6147,
    "unidad": "kN·m",
-   "ratio": 0.33,
+   "ratio": 0.3303,
    "ref": "DB-SE-A 6.2.6 / 6.3.3",
    "cumple": true
   },
   {
    "elemento": "Viga principal",
    "comprobacion": "ELU cortante Vd ≤ Vpl,Rd",
-   "demanda": 17.2822,
+   "demanda": 17.2986,
    "capacidad": 209.253,
    "unidad": "kN",
-   "ratio": 0.0826,
+   "ratio": 0.0827,
    "ref": "DB-SE-A 6.2.4",
    "cumple": true
   },
@@ -236,194 +258,324 @@
   {
    "elemento": "Viga principal",
    "comprobacion": "ELS apariencia (casi perm. ≤ L/300)",
-   "demanda": 3.7649,
+   "demanda": 3.7715,
    "capacidad": 14.6667,
    "unidad": "mm",
-   "ratio": 0.2567,
+   "ratio": 0.2572,
    "ref": "DB-SE 4.3.3.1",
    "cumple": true
   },
   {
    "elemento": "Zuncho",
    "comprobacion": "ELU flexión Md ≤ χLT·Mpl,Rd",
-   "demanda": 2.1329,
+   "demanda": 2.7251,
    "capacidad": 57.6147,
    "unidad": "kN·m",
-   "ratio": 0.037,
+   "ratio": 0.0473,
    "ref": "DB-SE-A 6.2.6 / 6.3.3",
    "cumple": true
   },
   {
    "elemento": "Zuncho",
    "comprobacion": "ELU cortante Vd ≤ Vpl,Rd",
-   "demanda": 2.5853,
+   "demanda": 3.3031,
    "capacidad": 209.253,
    "unidad": "kN",
-   "ratio": 0.0124,
+   "ratio": 0.0158,
    "ref": "DB-SE-A 6.2.4",
    "cumple": true
   },
   {
    "elemento": "Zuncho",
    "comprobacion": "ELS integridad (flecha activa ≤ L/400)",
-   "demanda": 0.2085,
+   "demanda": 0.3128,
    "capacidad": 8.25,
    "unidad": "mm",
-   "ratio": 0.0253,
+   "ratio": 0.0379,
    "ref": "DB-SE 4.3.3.1",
    "cumple": true
   },
   {
    "elemento": "Zuncho",
    "comprobacion": "ELS confort (δQ ≤ L/350)",
-   "demanda": 0.1516,
+   "demanda": 0.2275,
    "capacidad": 9.4286,
    "unidad": "mm",
-   "ratio": 0.0161,
+   "ratio": 0.0241,
    "ref": "DB-SE 4.3.3.1",
    "cumple": true
   },
   {
    "elemento": "Zuncho",
    "comprobacion": "ELS apariencia (casi perm. ≤ L/300)",
-   "demanda": 0.317,
+   "demanda": 0.3777,
    "capacidad": 11.0,
    "unidad": "mm",
-   "ratio": 0.0288,
+   "ratio": 0.0343,
    "ref": "DB-SE 4.3.3.1",
    "cumple": true
   },
   {
    "elemento": "Pilar",
    "comprobacion": "ELU pandeo por compresión Nd ≤ Nb,Rd",
-   "demanda": 20.1667,
+   "demanda": 20.901,
    "capacidad": 233.8153,
    "unidad": "kN",
-   "ratio": 0.0863,
+   "ratio": 0.0894,
    "ref": "DB-SE-A 6.3.2",
    "cumple": true
   },
   {
    "elemento": "Pilar",
    "comprobacion": "ELU interacción N + M (cm = 0,9)",
-   "demanda": 0.346,
+   "demanda": 0.3497,
    "capacidad": 1.0,
    "unidad": "-",
-   "ratio": 0.346,
+   "ratio": 0.3497,
    "ref": "DB-SE-A 6.3.4.2 (simplificada)",
    "cumple": true
   },
   {
    "elemento": "Placa base",
    "comprobacion": "ELU presión bajo placa σ ≤ fjd",
-   "demanda": 0.5042,
+   "demanda": 0.5225,
    "capacidad": 16.6667,
    "unidad": "MPa",
-   "ratio": 0.0303,
+   "ratio": 0.0314,
    "ref": "DB-SE-A 8.8.1",
    "cumple": true
   },
   {
    "elemento": "Placa base",
    "comprobacion": "ELU flexión de placa t,req ≤ t = 10 mm",
-   "demanda": 4.5596,
+   "demanda": 4.6419,
    "capacidad": 10.0,
    "unidad": "mm",
-   "ratio": 0.456,
+   "ratio": 0.4642,
    "ref": "DB-SE-A 8.8.1",
    "cumple": true
   },
   {
    "elemento": "Placa base",
    "comprobacion": "ELU soldadura pilar-placa en ángulo a = 4 mm perimetral",
-   "demanda": 20.1667,
+   "demanda": 20.901,
    "capacidad": 285.1703,
    "unidad": "kN",
-   "ratio": 0.0707,
+   "ratio": 0.0733,
    "ref": "DB-SE-A 8.6.2",
    "cumple": true
   },
   {
    "elemento": "Zapata",
    "comprobacion": "Tensión media σmed ≤ σadm",
-   "demanda": 35.9661,
-   "capacidad": 150.0,
+   "demanda": 53.9598,
+   "capacidad": 200.0,
    "unidad": "kPa",
-   "ratio": 0.2398,
+   "ratio": 0.2698,
    "ref": "DB-SE-C 4.3",
    "cumple": true
   },
   {
    "elemento": "Zapata",
    "comprobacion": "Tensión de borde σmax ≤ 1,25·σadm",
-   "demanda": 35.9661,
-   "capacidad": 187.5,
+   "demanda": 53.9598,
+   "capacidad": 250.0,
    "unidad": "kPa",
-   "ratio": 0.1918,
+   "ratio": 0.2158,
    "ref": "DB-SE-C 4.3",
    "cumple": true
   },
   {
    "elemento": "Zapata",
-   "comprobacion": "Armadura inferior por dirección: 4Ø12 c/23 cm",
-   "demanda": 288.0,
-   "capacidad": 452.4,
+   "comprobacion": "ELS asiento total s ≤ s,adm",
+   "demanda": 1.1648,
+   "capacidad": 25.0,
+   "unidad": "mm",
+   "ratio": 0.0466,
+   "ref": "DB-SE-C 4.2.2.3 / anejo F.2",
+   "cumple": true
+  },
+  {
+   "elemento": "Zapata",
+   "comprobacion": "ELS distorsión angular β ≤ 1/500",
+   "demanda": 0.0002,
+   "capacidad": 0.002,
+   "unidad": "-",
+   "ratio": 0.0882,
+   "ref": "DB-SE-C tabla 2.2",
+   "cumple": true
+  },
+  {
+   "elemento": "Zapata",
+   "comprobacion": "Armadura inferior por dirección: 3Ø12 c/25 cm",
+   "demanda": 162.0,
+   "capacidad": 339.3,
    "unidad": "mm²",
-   "ratio": 0.6366,
+   "ratio": 0.4775,
    "ref": "Código Estructural (bielas y tirantes, cuantía mínima)",
    "cumple": true
   },
   {
    "elemento": "Zapata",
    "comprobacion": "Compresión localizada bajo placa",
-   "demanda": 20.1667,
+   "demanda": 20.901,
    "capacidad": 2000.0,
    "unidad": "kN",
-   "ratio": 0.0101,
+   "ratio": 0.0105,
    "ref": "Código Estructural art. 61",
    "cumple": true
   },
   {
    "elemento": "Unión viga-pilar",
    "comprobacion": "2 tornillos M16 8.8 a cortante (1 plano)",
-   "demanda": 17.2822,
+   "demanda": 17.2986,
    "capacidad": 120.576,
    "unidad": "kN",
-   "ratio": 0.1433,
+   "ratio": 0.1435,
    "ref": "DB-SE-A 8.5.2.2",
    "cumple": true
   },
   {
    "elemento": "Unión viga-pilar",
    "comprobacion": "Aplastamiento en chapa de 8 mm",
-   "demanda": 17.2822,
+   "demanda": 17.2986,
    "capacidad": 209.92,
    "unidad": "kN",
-   "ratio": 0.0823,
+   "ratio": 0.0824,
    "ref": "DB-SE-A 8.5.2.2",
    "cumple": true
   }
  ],
+ "mediciones": {
+  "madera_m3": 0.3153,
+  "estribos_ud": 14,
+  "acero_kg": 474.0598,
+  "hormigon_m3": 0.432,
+  "limpieza_m3": 0.196,
+  "excavacion_m3": 1.792,
+  "armado_kg": 17.0464
+ },
+ "coste": 1665.4753,
+ "optimizacion": [
+  {
+   "direccion": "x",
+   "separacion": 0.6,
+   "serie": "IPE",
+   "canto": 0.3,
+   "coste": 1665.4753,
+   "vigueta": "70x195 C24",
+   "viga": "IPE 200",
+   "pilar": "SHS 80x4",
+   "zapata": "0.60x0.30",
+   "ratio_max": 0.8748
+  },
+  {
+   "direccion": "x",
+   "separacion": 0.6,
+   "serie": "IPE",
+   "canto": 0.35,
+   "coste": 1673.7553,
+   "vigueta": "70x195 C24",
+   "viga": "IPE 200",
+   "pilar": "SHS 80x4",
+   "zapata": "0.60x0.35",
+   "ratio_max": 0.8748
+  },
+  {
+   "direccion": "x",
+   "separacion": 0.6,
+   "serie": "IPE",
+   "canto": 0.4,
+   "coste": 1682.0353,
+   "vigueta": "70x195 C24",
+   "viga": "IPE 200",
+   "pilar": "SHS 80x4",
+   "zapata": "0.60x0.40",
+   "ratio_max": 0.8748
+  },
+  {
+   "direccion": "x",
+   "separacion": 0.4,
+   "serie": "IPE",
+   "canto": 0.3,
+   "coste": 1684.7443,
+   "vigueta": "45x195 C24",
+   "viga": "IPE 200",
+   "pilar": "SHS 80x4",
+   "zapata": "0.60x0.30",
+   "ratio_max": 0.9067
+  },
+  {
+   "direccion": "x",
+   "separacion": 0.4,
+   "serie": "IPE",
+   "canto": 0.35,
+   "coste": 1693.0243,
+   "vigueta": "45x195 C24",
+   "viga": "IPE 200",
+   "pilar": "SHS 80x4",
+   "zapata": "0.60x0.35",
+   "ratio_max": 0.9067
+  },
+  {
+   "direccion": "x",
+   "separacion": 0.4,
+   "serie": "IPE",
+   "canto": 0.4,
+   "coste": 1701.3043,
+   "vigueta": "45x195 C24",
+   "viga": "IPE 200",
+   "pilar": "SHS 80x4",
+   "zapata": "0.60x0.40",
+   "ratio_max": 0.9067
+  },
+  {
+   "direccion": "x",
+   "separacion": 0.6,
+   "serie": "IPE",
+   "canto": 0.5,
+   "coste": 1706.2753,
+   "vigueta": "70x195 C24",
+   "viga": "IPE 200",
+   "pilar": "SHS 80x4",
+   "zapata": "0.60x0.50",
+   "ratio_max": 0.8748
+  },
+  {
+   "direccion": "x",
+   "separacion": 0.5,
+   "serie": "IPE",
+   "canto": 0.3,
+   "coste": 1706.7545,
+   "vigueta": "70x195 C24",
+   "viga": "IPE 200",
+   "pilar": "SHS 80x4",
+   "zapata": "0.60x0.30",
+   "ratio_max": 0.7312
+  }
+ ],
+ "optimizacion_n": 64,
+ "optimizacion_ahorro": 3118.6579,
  "pilares_N": {
   "0,0": [
-   5.9166,
-   7.92,
-   17.2822
+   6.0939,
+   8.25,
+   17.2986
   ],
   "0,1": [
-   5.9166,
-   7.92,
-   17.2822
+   6.0939,
+   8.25,
+   17.2986
   ],
   "1,0": [
-   5.9166,
-   7.92,
-   17.2822
+   6.0939,
+   8.25,
+   17.2986
   ],
   "1,1": [
-   5.9166,
-   7.92,
-   17.2822
+   6.0939,
+   8.25,
+   17.2986
   ]
  }
 }

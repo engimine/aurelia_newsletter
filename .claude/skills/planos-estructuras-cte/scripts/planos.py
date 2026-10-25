@@ -418,8 +418,10 @@ def hoja_notas(cfg, r, M, idx, total, indice):
         f"- Madera: fluencia kdef = {N.KDEF[cfg.get('clase_servicio', 1)]} (clase de servicio {cfg.get('clase_servicio', 1)}).",
     ])
     bloque(0, "4. Cimentación (DB-SE-C)", [
-        f"- Zapatas aisladas de hormigón armado sobre terreno natural firme. Tensión admisible adoptada "
-        f"σadm = {cfg['cimentacion']['tension_admisible']:.0f} kPa, A CONFIRMAR POR ESTUDIO GEOTÉCNICO (DB-SE-C 3).",
+        f"- Zapatas aisladas de hormigón armado sobre terreno natural. σadm de proyecto = {zp['sadm']:.0f} kPa "
+        f"({_txt_fuente(cfg)}). Tipo de construcción {r['geotecnia']['reconocimiento']['tipo']}, grupo de terreno "
+        f"{r['geotecnia']['reconocimiento']['grupo']} (DB-SE-C tablas 3.1 y 3.2).",
+        f"- Clase de exposición del hormigón de cimentación: {r['geotecnia']['durabilidad']['clase']}.",
         f"- Cota de apoyo −{_m(zp['prof'])} m respecto a cara superior de solera existente (±0,00). Hormigón de limpieza "
         f"HL-150/B/20 de 10 cm.",
         "- Si aparecen rellenos, terreno blando o agua, avisar a la Dirección Facultativa antes de hormigonar.",
@@ -428,7 +430,7 @@ def hoja_notas(cfg, r, M, idx, total, indice):
     fy_p = N.ACEROS[mat["pilares"]][0]
     tab = [
         "HORMIGÓN ESTRUCTURAL (Código Estructural):",
-        f"- Zapatas: {mat['hormigon']}/B/20/IIa · nivel de control estadístico · γc = 1,50.",
+        f"- Zapatas: {mat['hormigon']}/B/20/{r['geotecnia']['durabilidad']['clase']} · nivel de control estadístico · γc = 1,50.",
         f"- Recubrimiento nominal: {zp['rec']*1000:.0f} mm (con hormigón de limpieza). Consistencia blanda, árido 20 mm.",
         f"ACERO EN BARRAS: {mat['armadura']} · fyk = {N.ARMADURAS[mat['armadura']]:.0f} MPa · nivel de control normal · γs = 1,15.",
         f"ACERO ESTRUCTURAL: perfiles laminados y chapas {mat['vigas']}JR (fy = {N.ACEROS[mat['vigas']][0]:.0f} MPa), "
@@ -561,17 +563,55 @@ def hoja_cimentacion(cfg, r, idx, total):
         ("MARCA", "PERFIL", "PLACA BASE", "ALTURA"),
         (f"P-1 a P-{len(pos)}", r["pilar"]["seccion"], f"{r['placa']['a']}×{r['placa']['a']}×{r['placa']['t']}",
          f"{_m(r['H'])} m")], cols=[0.24, 0.26, 0.30, 0.20])
+    _caja_geotecnia(h, cfg, r)
     Nmax = max(r["pilares_N"].values(), key=lambda v: v[0] + v[1])
     h.caja_panel("NOTAS DE CIMENTACIÓN", lineas=[
-        f"1. Tensión admisible adoptada {cfg['cimentacion']['tension_admisible']:.0f} kPa: confirmar con estudio geotécnico.",
+        f"1. σadm de proyecto {zp['sadm']:.0f} kPa ({_txt_fuente(cfg)}).",
         f"2. Cota de apoyo de zapatas −{_m(zp['prof'])} m (±0,00 = cara sup. solera existente). Hormigón de limpieza 10 cm.",
-        f"3. Hormigón {cfg['materiales']['hormigon']}/B/20/IIa, acero {cfg['materiales']['armadura']}. "
+        f"3. Hormigón {cfg['materiales']['hormigon']}/B/20/{r['geotecnia']['durabilidad']['clase']}, acero {cfg['materiales']['armadura']}. "
         f"Recubrimiento {zp['rec']*1000:.0f} mm.",
         f"4. Pilares centrados en zapata. Axil máx. de servicio: G = {_m(Nmax[0])} kN, Q = {_m(Nmax[1])} kN.",
         "5. Ver detalle de zapata y placa de anclaje en plano E-05.",
     ])
     _leyenda(h, [("rect_disc", "Zapata aislada (bajo solera)"), ("pilar", "Pilar metálico")])
     return h
+
+
+def _txt_fuente(cfg):
+    g = cfg.get("geotecnia", {})
+    f = g.get("fuente", "orientativo")
+    if f == "estudio":
+        return f"estudio geotécnico: {g.get('referencia', '')}"
+    if f == "geologia":
+        return "ESTIMADA SEGÚN GEOLOGÍA, sin estudio geotécnico: confirmar antes de ejecutar"
+    return "adoptada sin estudio geotécnico: confirmar"
+
+
+def _caja_geotecnia(h, cfg, r):
+    g = cfg.get("geotecnia", {})
+    zp = r["zapata"]
+    geo = zp.get("geo", {})
+    rc = r["geotecnia"]["reconocimiento"]
+    lineas = [f"Fuente: {_txt_fuente(cfg)}."]
+    if g.get("fuente") == "geologia":
+        import geotecnia as G
+        lit = G.GEOLOGIA[g["litologia"]]
+        lineas.append(f"Litología: {lit['desc']} ({g.get('referencia', 'mapa geológico')}).")
+        if g.get("espesor_relleno"):
+            lineas.append(f"Relleno/tierra vegetal estimado {_m(g['espesor_relleno'])} m: apoyar en terreno natural.")
+    elif g.get("fuente") == "estudio":
+        for e in g.get("estratos", [])[:4]:
+            lineas.append(f"{_m(e['desde'])}-{_m(e['hasta'])} m: {e.get('nombre', e['tipo'])}")
+    lineas.append(f"Construcción {rc['tipo']} · terreno {rc['grupo']} · NF: "
+                  f"{('-' + _m(g['nivel_freatico']) + ' m') if g.get('nivel_freatico') is not None else 'no detectado'}.")
+    if geo.get("q_hund"):
+        lineas.append(f"qh/γR = {geo['q_hund']:.0f} kPa · por asiento {geo['q_asiento']:.0f} kPa"
+                      + (f" · D.25 {geo['q25']:.0f} kPa" if geo.get("q25") else "") + f" → σadm = {zp['sadm']:.0f} kPa.")
+    else:
+        lineas.append(f"σadm = {zp['sadm']:.0f} kPa.")
+    for a in rc["avisos"][:2]:
+        lineas.append("⚠ " + a)
+    h.caja_panel("DATOS GEOTÉCNICOS (DB-SE-C)", lineas=lineas, sombrear=g.get("fuente") != "estudio", size=1.55)
 
 
 def _leyenda(h, items):
@@ -1094,6 +1134,21 @@ def hoja_calculos(cfg, r, M, idx, total):
             yy -= 3.6
         h.l([bx0 + bw] * 2, [y0 + 1, y1 - 4.5], lw=LW_F, ls="--", color="#c62828")
         h.panel_y = y0 - 2
+    if r.get("optimizacion"):
+        filas = [("#", "DIR/SEP", "VIGUETA", "VIGA", "COSTE €")]
+        for i, t in enumerate(r["optimizacion"][:5], 1):
+            filas.append((str(i), f"{t['direccion'].upper()} {t['separacion']:.2f}", t["vigueta"], t["viga"],
+                          f"{t['coste']:.0f}"))
+        h.caja_panel(f"OPTIMIZACIÓN ({r['optimizacion_n']} soluciones válidas)", filas=filas,
+                     cols=[0.08, 0.20, 0.30, 0.22, 0.20], size=1.5, alto_fila=2.7)
+    med = r.get("mediciones")
+    if med:
+        h.caja_panel("MEDICIONES Y COSTE ESTIMADO", lineas=[
+            f"Acero {med['acero_kg']:.0f} kg · madera {med.get('madera_m3', 0):.2f} m³ · hormigón {med['hormigon_m3']:.2f} m³ "
+            f"· armadura {med['armado_kg']:.0f} kg · excavación {med['excavacion_m3']:.2f} m³.",
+            f"Coste estructura (PEM orientativo): {r['coste']:.0f} €"
+            + (f" · ahorro {r['optimizacion_ahorro']:.0f} € frente a la peor solución válida." if r.get("optimizacion") else "."),
+        ])
     h.caja_panel("CONCLUSIÓN", lineas=[
         ("Todas las comprobaciones de resistencia (ELU) y aptitud al servicio (ELS) CUMPLEN con la normativa indicada."
          if r["ok"] else "ATENCIÓN: existen comprobaciones que NO CUMPLEN. Revisar secciones antes de emitir."),
