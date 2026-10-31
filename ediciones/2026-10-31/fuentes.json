@@ -1,0 +1,89 @@
+{
+  "edition": "2026-10-31",
+  "window": [
+    "2026-10-25",
+    "2026-10-31"
+  ],
+  "news": [
+    {
+      "date": "30 OCT 2026",
+      "org": "OpenAI · IETF",
+      "title": "Una sola señal para decir que una web no quiere entrenar IA",
+      "body": "OpenAI anunció que respetará una señal común en robots.txt para que los responsables de una web comuniquen a varios proveedores su preferencia sobre el uso del contenido en el entrenamiento de modelos generativos fundacionales. La compañía prevé implementarla en los próximos meses y mantiene sus controles actuales para GPTBot.",
+      "take": "Es una preferencia técnica voluntaria, no un bloqueo mágico ni una ley. Conviene separar entrenamiento, aparición en buscadores de IA y visitas iniciadas por el usuario: OpenAI usa agentes distintos para cada función.",
+      "url": "https://openai.com/index/helping-websites-express-ai-training-preferences/"
+    },
+    {
+      "date": "28 OCT 2026",
+      "org": "Google DeepMind",
+      "title": "Gemini 4 Carbon puede sostener tareas de ingeniería durante días",
+      "body": "Google presentó Gemini 4 Carbon, centrado en código, agentes de largo recorrido y ciberdefensa. La empresa declara 88,2% en SEC-bench Pro para localizar vulnerabilidades, 54,8% en ExploitGym y 71,0% en CWE-bench para corregirlas. El acceso inicial se limita a un grupo de defensores de seguridad.",
+      "take": "Los resultados proceden del proveedor y el despliegue todavía es restringido. Lo nuevo no es solo que responda mejor: es que pueda persistir durante días sin saltarse límites ni inventar avances.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+    },
+    {
+      "date": "26 OCT 2026",
+      "org": "Anthropic · SEC",
+      "title": "Anthropic presenta su salida a bolsa bajo el símbolo ANT",
+      "body": "Anthropic, PBC registró ante la SEC el formulario S-1 para una oferta pública inicial y pretende cotizar en Nasdaq con el símbolo ANT. La cantidad de acciones y el rango de precio todavía no están fijados; el registro aún no es efectivo.",
+      "take": "La noticia es el inicio del proceso, no una cotización ya abierta. Convertirse en empresa pública someterá sus promesas de seguridad, crecimiento e infraestructura a un escrutinio financiero mucho mayor.",
+      "url": "https://www.anthropic.com/news/s1-sec"
+    },
+    {
+      "date": "27 OCT 2026",
+      "org": "Google Cloud · Google DeepMind",
+      "title": "El cerebro de los robots llega a Google Cloud",
+      "body": "Gemini Robotics Embodied Reasoning 2 entró en vista previa pública. El modelo interpreta vídeo continuo, planifica tareas de varios minutos, llama a herramientas de control y puede coordinar distintos tipos de robots. Google afirma que sirve desde brazos fijos hasta robots humanoides.",
+      "take": "Es una capa de razonamiento de alto nivel: no sustituye los controladores físicos ni las validaciones de seguridad. La clave práctica es probar cada comportamiento en simulación antes de tocar una máquina real.",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-robotics-embodied-reasoning-2-is-now-available-on-google-cloud"
+    },
+    {
+      "date": "28 OCT 2026",
+      "org": "Microsoft · GitHub",
+      "title": "Microsoft abre el motor que coordina sus Copilot",
+      "body": "Microsoft llevó a Foundry el Copilot harness creado por GitHub. La capa organiza instrucciones, contexto, herramientas, sandbox y controles, y puede trabajar con más de veinte modelos además de claves aportadas por el cliente. El SDK puede descargarse o ejecutarse como servicio gestionado.",
+      "take": "El modelo deja de ser toda la aplicación. El valor se desplaza al sistema que elige modelos, limita permisos, conserva contexto, ejecuta herramientas y mide si el trabajo terminó bien.",
+      "url": "https://blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work/"
+    },
+    {
+      "date": "27 OCT 2026",
+      "org": "IBM · HashiCorp",
+      "title": "Cada agente recibe identidad, permisos y botón de parada",
+      "body": "IBM amplió HashiCorp Vault con identidades gobernadas y credenciales breves para agentes. watsonx Orchestrate añade descubrimiento de agentes en otras nubes, aislamiento, evaluación y un interruptor para detenerlos. Algunas funciones ya están disponibles y otras permanecen en vista previa técnica.",
+      "take": "Un agente empresarial necesita dueño, función, permisos mínimos y trazabilidad. Si no se puede revocar su acceso en tiempo real, todavía no está preparado para operar sistemas críticos.",
+      "url": "https://newsroom.ibm.com/2026-10-27-ibm-introduces-identity-and-control-for-ai-agents%2C-securing-frontier-intelligence-for-the-enterprise"
+    },
+    {
+      "date": "28 OCT 2026",
+      "org": "Intel · SAP",
+      "title": "Una orden de SAP termina en un robot moviendo mercancía",
+      "body": "Intel y SAP demostraron un prototipo que conecta SAP Extended Warehouse Management con robots autónomos en el borde. El sistema convierte una orden empresarial en una tarea física y devuelve al ERP el estado, el resultado y las excepciones.",
+      "take": "Es una prueba de concepto, no un almacén universal ya desplegado. Aun así, enseña el salto decisivo: la IA física empieza y termina dentro del proceso de negocio, con reglas y seguimiento.",
+      "url": "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/intel-demonstrates-physical-ai-action-with-sap.html"
+    },
+    {
+      "date": "27 OCT 2026",
+      "org": "OpenAI · Oracle",
+      "title": "Oracle lleva finanzas, compras y seguridad dentro de ChatGPT",
+      "body": "OpenAI y Oracle ampliaron su alianza para conectar aplicaciones y datos de Oracle con ChatGPT. Oracle AI Workspace aspira a completar flujos aprobados con inicio de sesión unificado y permisos corporativos; también se anunciaron Security Mesh, App Composer y un paquete para pymes.",
+      "take": "Varias capacidades están descritas como objetivos o productos en desarrollo. La prueba real será si una persona puede ejecutar un proceso completo sin perder controles, aprobaciones ni registro de quién hizo qué.",
+      "url": "https://openai.com/index/oracle-apps-in-chatgpt/"
+    },
+    {
+      "date": "26 OCT 2026",
+      "org": "Cadence",
+      "title": "Modelos especializados aprenden a diseñar chips con herramientas reales",
+      "body": "Cadence presentó Maestro, una cartera de modelos especializados para sus agentes de diseño electrónico y de sistemas. Los modelos se entrenan con ciclos de refuerzo donde simuladores y herramientas deterministas verifican resultados. Cadence declara hasta 30% más calidad y cinco veces más eficiencia de tokens frente a un modelo generalista.",
+      "take": "Son cifras iniciales del proveedor y el acceso está limitado a clientes seleccionados. El patrón merece atención: un modelo especializado puede superar al generalista cuando recibe feedback verificable del trabajo real.",
+      "url": "https://www.cadence.com/en_US/home/company/newsroom/press-releases/pr/2026/cadence-introduces-maestro-a-domain-specialized-ai-model.html"
+    },
+    {
+      "date": "30 OCT 2026",
+      "org": "NVIDIA · SETI Institute",
+      "title": "Agentes de IA ya apuntan un radiotelescopio y corrigen su señal",
+      "body": "Breakthrough Listen y SETI Institute integraron agentes con NVIDIA Holoscan en el Allen Telescope Array. El sistema puede orientar antenas, calibrar instrumentos, procesar hasta 2,4 terabits por segundo y corregir datos desde instrucciones en lenguaje natural. Ya logró detectar en tiempo real un púlsar de la Nebulosa del Cangrejo.",
+      "take": "No es una detección extraterrestre: es una demostración científica con un púlsar conocido. Lo extraordinario es que el agente actúa sobre un instrumento y analiza el flujo mientras llega, sin llenar primero discos durante semanas.",
+      "url": "https://blogs.nvidia.com/blog/ai-joins-the-search-for-extraterrestrial-signals/"
+    }
+  ]
+}

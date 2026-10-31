@@ -1,0 +1,40 @@
+🚨 TU WEB PODRÁ DECIR NO AL ENTRENAMIENTO DE IA CON UNA SOLA SEÑAL.
+
+Hasta ahora, quien quería limitar el uso de su contenido tenía que identificar crawlers y mantener reglas distintas para cada proveedor.
+
+OpenAI acaba de anunciar que respetará una señal común en robots.txt para expresar una misma preferencia a varios participantes.
+
+La implementará en los próximos meses.
+
+Y aquí está el matiz que importa:
+
+→ no es una ley
+→ no es un muro infalible
+→ no impide automáticamente aparecer en buscadores de IA
+→ no sustituye los controles que ya existen
+
+Pero sí devuelve algo esencial a quien publica: una forma más clara de decir cómo quiere que se use su trabajo.
+
+Esta semana deja otra señal enorme.
+
+Gemini 4 Carbon puede sostener tareas de ingeniería durante días. Google llevó su razonamiento robótico a la nube. Microsoft abrió el motor que coordina más de veinte modelos. IBM dio identidad, credenciales breves y botón de parada a los agentes. Y Anthropic inició su salida a bolsa.
+
+La IA sale del chat.
+
+Por eso, las palabras decisivas ya no son solo “más potente”.
+
+Son: permiso, identidad, trazabilidad y parada.
+
+Como diría Aurelia:
+
+“La IA útil no es la que puede entrar en todas partes. Es la que sabe qué puertas debe respetar.”
+
+👇 Las 10 noticias, con fecha y fuente oficial:
+https://engimine.github.io/aurelia_newsletter/ediciones/2026-10-31/
+
+🤓 El Club de los Frikis:
+https://www.skool.com/frikis
+
+¿Tu web debería permitir que sus contenidos entrenen modelos de IA?
+
+#InteligenciaArtificial #IA #OpenAI #RobotsTXT #AgentesIA #Gemini #Anthropic #Aurelia #ElClubDeLosFrikis
